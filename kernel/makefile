@@ -1,4 +1,3 @@
-# object files
 OBJS=			\
 start.o			\
 main.o			\
