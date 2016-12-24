@@ -1,6 +1,12 @@
 #ifndef ASM_H
 #define ASM_H
 
+/**
+ * NOTICE:
+ * GitHub linguistic incorrectly displays this file as C++ when it is actually written in C.
+ * I was going to submit a pull request to linguistic but I decided to not agree to the terms for contributing.
+ */
+
 #include <stdint.h>
 
 // macros for enabling and disabling interrupts
