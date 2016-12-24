@@ -9,10 +9,21 @@
 
 
 
+# executables
+export ASM=nasm
+export CC=i686-elf-gcc
+export LINK=i686-elf-gcc
+export QEMU=qemu-system-i386
+
 # flags
-CFLAGS=-nostdlib -std=gnu99 -ffreestanding -O2 -Wall -Wextra -nostdinc -fno-builtin -I./include -masm=intel -c -o
-LDFLAGS=-ffreestanding -O3 -nostdlib -lgcc -T kernel/link.ld -o iso/boot/kernel.bin
-ASFLAGS=-felf32 -o
+export ASFLAGS=-felf32
+export CFLAGS=-nostdlib -std=gnu99 -ffreestanding -O2 -Wall -Wextra -nostdinc -fno-builtin -I./include -masm=intel -c
+export LDFLAGS=-ffreestanding -O3 -nostdlib -lgcc
+
+# object files
+OBJS=			\
+kernel/start.o		\
+kernel/main.o		\
 
 all:
 	make build
@@ -20,24 +31,26 @@ all:
 	make clean
 
 build:
-	# iso/
+	# iso
 	mkdir -p iso/boot/grub
 	cp grub.cfg iso/boot/grub/grub.cfg
 	
-	# *.o
-	nasm		$(ASFLAGS) kernel/start.o kernel/start.asm
-	i686-elf-gcc	$(CFLAGS) kernel/main.o kernel/main.c
+	# kernel
+	$(MAKE) -C kernel build
+	
+	# library
+	# $(MAKE) -C library build
 	
 	# kernel.bin
-	i686-elf-gcc	$(LDFLAGS) kernel/start.o kernel/main.o
+	$(CC) $(LDFLAGS) -T kernel/link.ld -o iso/boot/kernel.bin $(OBJS)
 	
 	# CarbonOS.iso
-	grub-mkrescue -o CarbonOS.iso iso/
+	grub-mkrescue -o CarbonOS.iso iso
 
 vm:
-	qemu-system-i386 -cdrom CarbonOS.iso
+	$(QEMU) -cdrom CarbonOS.iso
 
 clean:
-	rm -rf iso/
+	rm -rf iso
 	rm -f CarbonOS.iso
-	find . -name "*.o" -type f -delete
+	$(MAKE) -C kernel clean
