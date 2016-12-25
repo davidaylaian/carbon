@@ -8,7 +8,6 @@
 # * qemu		(sudo apt-get install qemu)
 
 
-
 # executables
 export ASM=nasm
 export CC=i686-elf-gcc
@@ -17,15 +16,17 @@ export QEMU=qemu-system-i386
 
 # flags
 export ASFLAGS=-felf32
-export CFLAGS=-nostdlib -std=gnu99 -ffreestanding -O2 -Wall -Wextra -nostdinc -fno-builtin -I./include -masm=intel -c
+export CFLAGS=-nostdlib -std=gnu99 -ffreestanding -O2 -Wall -Wextra -nostdinc -fno-builtin -I ~/CarbonOS/include -masm=intel -c
 export LDFLAGS=-ffreestanding -O3 -nostdlib -lgcc
 
 # object files
-OBJS=			\
-kernel/start.o		\
-kernel/main.o		\
+OBJS=				\
+kernel/start.o			\
+kernel/main.o			\
+library/terminal.o		\
 
 all:
+	echo $(shell basename $(CURDIR))
 	make build
 	make vm
 	make clean
@@ -39,7 +40,7 @@ build:
 	$(MAKE) -C kernel build
 	
 	# library
-	# $(MAKE) -C library build
+	$(MAKE) -C library build
 	
 	# kernel.bin
 	$(CC) $(LDFLAGS) -T kernel/link.ld -o iso/boot/kernel.bin $(OBJS)
@@ -54,3 +55,4 @@ clean:
 	rm -rf iso
 	rm -f CarbonOS.iso
 	$(MAKE) -C kernel clean
+	$(MAKE) -C library clean
