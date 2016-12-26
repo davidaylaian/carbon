@@ -26,7 +26,6 @@ kernel/main.o			\
 library/terminal.o		\
 
 all:
-	echo $(shell basename $(CURDIR))
 	make build
 	make vm
 	make clean
