@@ -7,7 +7,7 @@ uint16_t* vidmem = (uint16_t*) 0xB8000;
 uint8_t terminal_color;
 
 // sets cursor location to xpos, ypos
-void updateCursor(int xpos, int ypos)
+void updateCursor(size_t xpos, size_t ypos)
 {
 	// calculate where cursor should be
 	uint16_t position = ypos * TERMINAL_WIDTH + xpos;
@@ -26,13 +26,13 @@ void setColor(enum vga_color fgcolor, enum vga_color bgcolor)
 }
 
 // displays c to xpos, ypos
-void setChar(char c, uint8_t xpos, uint8_t ypos)
+void setChar(char c, size_t xpos, size_t ypos)
 {
 	vidmem [ypos * TERMINAL_WIDTH + xpos] = (c | terminal_color << 8);
 }
 
 // gets the char at xpos, ypos
-char getChar(uint8_t xpos, uint8_t ypos)
+char getChar(size_t xpos, size_t ypos)
 {
 	return vidmem [ypos * TERMINAL_WIDTH + xpos];
 }

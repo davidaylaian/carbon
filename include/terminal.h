@@ -39,9 +39,9 @@ inline size_t getTerminalHeight() {
 }
 
 // function prototypes
-extern void updateCursor(int xpos, int ypos);
+extern void updateCursor(size_t xpos, size_t ypos);
 extern void setColor(enum vga_color fgcolor, enum vga_color bgcolor);
-extern void setChar(char c, uint8_t xpos, uint8_t ypos);
-extern char getChar(uint8_t xpos, uint8_t ypos);
+extern void setChar(char c, size_t xpos, size_t ypos);
+extern char getChar(size_t xpos, size_t ypos);
 
 #endif
