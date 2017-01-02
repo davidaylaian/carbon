@@ -1,5 +1,5 @@
 # CarbonOS
-CarbonOS is an [open-source](https://github.com/DavidAylaian/CarbonOS) operating system designed to run on x86.
+CarbonOS is an open-source operating system designed to run on x86-based computers.
 
 ## Organization
 CarbonOS is organized into four sections:
