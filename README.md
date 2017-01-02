@@ -1,9 +1,7 @@
-CarbonOS
-========
+# CarbonOS
 CarbonOS is an [open-source](https://github.com/DavidAylaian/CarbonOS) operating system designed to run on x86.
 
-Organization
--------------
+## Organization
 CarbonOS is organized into four sections:
 * **The [Drivers](drivers):** low-level, hardware-dependent drivers that provide an abstraction layer between the hardware and the library. This section contains all of the files that only work on specific hardware, allowing the rest of the system to be portable.
 * **The [Library](library):** the high-level library that provides an abstraction layer between the drivers and the kernel. The library is completely independent from hardware. The CarbonOS library differs from the standard C library, but most of the functions are similar if not the same.
