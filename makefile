@@ -21,9 +21,9 @@ export LDFLAGS=-ffreestanding -O3 -nostdlib -lgcc
 
 # object files
 OBJS=				\
+drivers/terminal.o		\
 kernel/start.o			\
 kernel/main.o			\
-library/terminal.o		\
 
 all:
 	make build
@@ -35,11 +35,14 @@ build:
 	mkdir -p iso/boot/grub
 	cp grub.cfg iso/boot/grub/grub.cfg
 	
-	# kernel
-	$(MAKE) -C kernel build
+	# drivers
+	$(MAKE) -C drivers build
 	
 	# library
 	$(MAKE) -C library build
+	
+	# kernel
+	$(MAKE) -C kernel build
 	
 	# kernel.bin
 	$(CC) $(LDFLAGS) -T kernel/link.ld -o iso/boot/kernel.bin $(OBJS)
@@ -53,5 +56,6 @@ vm:
 clean:
 	rm -rf iso
 	rm -f CarbonOS.iso
-	$(MAKE) -C kernel clean
+	$(MAKE) -C drivers clean
 	$(MAKE) -C library clean
+	$(MAKE) -C kernel clean
