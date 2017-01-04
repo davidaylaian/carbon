@@ -9,29 +9,29 @@ CarbonOS is organized into four sections:
 * **The [Kernel](kernel):** the kernel that uses the library to provide the end-user experience. In the future, this will be split up into two more sections: the kernel and the shell.
 
 ## Compiling
-In order to build the system on a Debian-based OS, you must first install the dependencies.
+###### Note: section was written for use on [Debain-based](https://www.debian.org) systems. Please submit us an [issue](issues) for instructions on how to build CarbonOS on other systems.
+
+#### Step 1: [Clone](https://github.com/DavidAylaian/CarbonOS/archive/master.zip) and extract the repository.
+
+#### Step 2: Install dependencies
 * **GNU Make:** `sudo apt-get install make`
 * **NASM:** `sudo apt-get install nasm`
 * **GCC Cross-Compiler:** [`http://wiki.osdev.org/GCC_Cross-Compiler`](http://wiki.osdev.org/GCC_Cross-Compiler)
 * **GNU Xorriso:** `sudo apt-get install xorriso`
-* **QEMU** (technically not part of the build process): `sudo apt-get install qemu`
+* **QEMU**: `sudo apt-get install qemu`
 
-Now simply run the makefile.
+#### Step 3: Build the system
+Open a terminal and `cd` to the directory you extracted the repository to. The system can be compiled via. `make`.
 ```bash
+# build system
 make build
-```
 
-You can run an emulator using
-```bash
+# run a virtual machine
 make vm
-```
 
-When you're all finished, delete all compiled files using
-```bash
+# clean up everything made with build
 make clean
-```
 
-You can also do all three in that order automatically with
-```bash
+# do all three in that order
 make all
 ```
