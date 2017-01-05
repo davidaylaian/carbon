@@ -6,7 +6,7 @@
 #include <stdint.h>
 
 // color constants
-enum vga_color {
+enum TERMINAL_COLOR {
 	BLACK = 0,
 	BLUE = 1,
 	GREEN = 2,
@@ -25,22 +25,10 @@ enum vga_color {
 	WHITE = 15
 };
 
-// variables
-extern const size_t TERMINAL_WIDTH;
-extern const size_t TERMINAL_HEIGHT;
-
-// inline functions
-inline size_t getTerminalWidth() {
-	return TERMINAL_WIDTH;
-}
-
-inline size_t getTerminalHeight() {
-	return TERMINAL_HEIGHT;
-}
-
-// function prototypes
+extern size_t getTerminalWidth();
+extern size_t getTerminalHeight();
 extern void updateCursor(size_t xpos, size_t ypos);
-extern void setColor(enum vga_color fgcolor, enum vga_color bgcolor);
+extern void setColor(enum TERMINAL_COLOR fgcolor, enum TERMINAL_COLOR bgcolor);
 extern void setChar(char c, size_t xpos, size_t ypos);
 extern char getChar(size_t xpos, size_t ypos);
 

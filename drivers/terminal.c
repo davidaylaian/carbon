@@ -6,6 +6,16 @@ const size_t TERMINAL_HEIGHT	= 25;
 uint16_t* vidmem = (uint16_t*) 0xB8000;
 uint8_t terminal_color;
 
+// returns width of terminal
+size_t getTerminalWidth() {
+	return TERMINAL_WIDTH;
+}
+
+// returns height of terminal
+size_t getTerminalHeight() {
+	return TERMINAL_HEIGHT;
+}
+
 // sets cursor location to xpos, ypos
 void updateCursor(size_t xpos, size_t ypos)
 {
@@ -20,7 +30,7 @@ void updateCursor(size_t xpos, size_t ypos)
 }
 
 // changes the color of outputted text
-void setColor(enum vga_color fgcolor, enum vga_color bgcolor)
+void setColor(enum TERMINAL_COLOR fgcolor, enum TERMINAL_COLOR bgcolor)
 {
 	terminal_color = (fgcolor | bgcolor << 4);
 }
