@@ -1,9 +1,9 @@
 #include <drivers/terminal.h>
 
 // variables
-const size_t TERMINAL_WIDTH	= 80;
-const size_t TERMINAL_HEIGHT	= 25;
-uint16_t* vidmem = (uint16_t*) 0xB8000;
+const volatile size_t TERMINAL_WIDTH	= 80;
+const volatile size_t TERMINAL_HEIGHT	= 25;
+volatile uint16_t* vidmem = (uint16_t*) 0xB8000;
 uint8_t terminal_color;
 
 // returns width of terminal
