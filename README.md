@@ -5,7 +5,7 @@ CarbonOS is an open-source operating system designed to run on x86-based compute
 CarbonOS is organized into four sections:
 * **The [Drivers](drivers):** low-level, hardware-dependent drivers that provide an abstraction layer between the hardware and the library. This section contains all of the files that only work on specific hardware, allowing the rest of the system to be portable.
 * **The [Library](library):** the high-level library that provides an abstraction layer between the drivers and the kernel. The library is completely independent from hardware. The CarbonOS library differs from the standard C library, but most of the functions are similar if not the same.
-* **The [Headers](include):** the header files for both the drivers and library that can be linked with an `#include`.
+* **The [Headers](include):** the header files for both the drivers and library that can be linked with an `#include`. The library headers stored directly in [include](include), but the driver headers are placed into [include/drivers](include/drivers).
 * **The [Kernel](kernel):** the kernel that uses the library to provide the end-user experience. In the future, this will be split up into two more sections: the kernel and the shell.
 
 ## Compiling
@@ -22,6 +22,7 @@ CarbonOS is organized into four sections:
 
 #### Step 3: Build the system
 Open a terminal and `cd` to the directory you extracted the repository to. The system can be compiled via. `make`.
+
 ```bash
 # build system
 make build

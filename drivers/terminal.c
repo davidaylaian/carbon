@@ -1,4 +1,4 @@
-#include <terminal.h>
+#include <drivers/terminal.h>
 
 // variables
 const size_t TERMINAL_WIDTH	= 80;
