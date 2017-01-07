@@ -1,9 +1,9 @@
 # object files
 OBJS=				\
-length.o			\
+strlen.o			\
 
 build:
-	$(CC) $(CFLAGS) length.c	-o length.o
+	$(CC) $(CFLAGS) strlen.c	-o strlen.o
 
 clean:
 	rm -f $(OBJS)

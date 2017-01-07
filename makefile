@@ -22,7 +22,7 @@ export LDFLAGS=-ffreestanding -O3 -nostdlib -lgcc
 # object files
 OBJS=				\
 drivers/terminal.o		\
-library/string/length.o		\
+library/string/strlen.o		\
 kernel/start.o			\
 kernel/main.o			\
 

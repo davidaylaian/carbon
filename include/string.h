@@ -4,6 +4,6 @@
 #include <stddef.h>
 #include <stdint.h>
 
-extern size_t length(string str);
+extern size_t strlen(string str);
 
 #endif
