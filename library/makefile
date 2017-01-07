@@ -1,6 +1,5 @@
-OBJS=			\
-
 build:
+	$(MAKE) -C string build
 
 clean:
-	rm -f $(OBJS)
+	$(MAKE) -C string clean
