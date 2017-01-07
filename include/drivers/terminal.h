@@ -25,6 +25,7 @@ enum TERMINAL_COLOR {
 	WHITE = 15
 };
 
+// function prototypes
 extern size_t getTerminalWidth();
 extern size_t getTerminalHeight();
 extern void setColor(enum TERMINAL_COLOR fgcolor, enum TERMINAL_COLOR bgcolor);
