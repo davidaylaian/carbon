@@ -6,8 +6,18 @@ const volatile size_t TERMINAL_HEIGHT	= 25;
 volatile uint16_t* vidmem = (uint16_t*) 0xB8000;
 uint8_t terminal_color;
 
+// returns width of terminal
+size_t getTerminalWidth() {
+	return TERMINAL_WIDTH;
+}
+
+// returns height of terminal
+size_t getTerminalHeight() {
+	return TERMINAL_HEIGHT;
+}
+
 // sets cursor location to xpos, ypos
-static void updateCursor(size_t xpos, size_t ypos)
+void updateCursor(size_t xpos, size_t ypos)
 {
 	// calculate where cursor should be
 	uint16_t position = ypos * TERMINAL_WIDTH + xpos;
@@ -17,16 +27,6 @@ static void updateCursor(size_t xpos, size_t ypos)
 	outb(0x3D5, (uint8_t) (position & 0xFF));
 	outb(0x3D4, 0x0E);
 	outb(0x3D5, (uint8_t) ((position >> 8) & 0xFF));
-}
-
-// returns width of terminal
-size_t getTerminalWidth() {
-	return TERMINAL_WIDTH;
-}
-
-// returns height of terminal
-size_t getTerminalHeight() {
-	return TERMINAL_HEIGHT;
 }
 
 // changes the color of outputted text
