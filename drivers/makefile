@@ -1,8 +1,5 @@
-OBJS=			\
-terminal.o		\
-
 build:
-	$(CC) $(CFLAGS) terminal.c	-o terminal.o
+	$(MAKE) -C terminal build
 
 clean:
-	rm -f $(OBJS)
+	$(MAKE) -C terminal clean
