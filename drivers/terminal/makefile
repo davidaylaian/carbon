@@ -1,5 +1,5 @@
 OBJS=			\
-terminal.o		\
+vga.o			\
 
 build:
 	$(CC) $(CFLAGS) vga.c	-o vga.o
