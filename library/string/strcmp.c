@@ -7,5 +7,5 @@ int strcmp(const char *str1, const char *str2)
 		if (*str1++ == 0) return 0;
 	}
 	
-	return *(const char *)str1 - *(const char *)(str2 - 1);
+	return *(string) str1 - *(string) (str2 - 1);
 } 
