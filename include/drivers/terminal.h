@@ -25,6 +25,10 @@ enum TERMINAL_COLOR {
 	WHITE = 15
 };
 
+// ports
+#define CRCT_ADDRESS	0x3D4
+#define CRCT_DATA	0x3D5
+
 // function prototypes
 extern size_t getTerminalWidth();
 extern size_t getTerminalHeight();
@@ -32,5 +36,6 @@ extern void updateCursor(size_t xpos, size_t ypos);
 extern void setColor(enum TERMINAL_COLOR fgcolor, enum TERMINAL_COLOR bgcolor);
 extern void setChar(char c, size_t xpos, size_t ypos);
 extern char getChar(size_t xpos, size_t ypos);
+extern void installTerminal(uint8_t cursorSize);
 
 #endif

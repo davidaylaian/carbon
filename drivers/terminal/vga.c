@@ -6,6 +6,29 @@ const volatile size_t TERMINAL_HEIGHT	= 25;
 volatile uint16_t* vidmem = (uint16_t*) 0xB8000;
 uint8_t terminal_color;
 
+/* Please refer to the FreeVGA documentation	*/
+/* project for details on the static functions.	*/
+
+static void setMaximumScanLine(uint8_t fontheight)
+{
+	outb(CRCT_ADDRESS, 0x09);
+	outb(CRCT_DATA, fontheight);
+}
+
+static void disableCursor() {
+	outb(0x3D4, 0x0A);
+	outb(0x3D5, 0b00100000);
+}
+
+static void enableCursor(uint8_t top, uint8_t bottom)
+{
+	outb(0x3D4, 0x0A);
+	outb(0x3D5, inb(0x3D5) & 0xC0 | top);
+	
+	outb(0x3D4, 0x0B);
+	outb(0x3D5, inb(0x3E0) & 0xE0 | bottom);
+}
+
 // returns width of terminal
 size_t getTerminalWidth() {
 	return TERMINAL_WIDTH;
@@ -39,11 +62,20 @@ void setColor(enum TERMINAL_COLOR fgcolor, enum TERMINAL_COLOR bgcolor)
 void setChar(char c, size_t xpos, size_t ypos)
 {
 	vidmem [ypos * TERMINAL_WIDTH + xpos] = (c | terminal_color << 8);
-	updateCursor(xpos+1, ypos);
 }
 
 // gets the char at xpos, ypos
 char getChar(size_t xpos, size_t ypos)
 {
 	return vidmem [ypos * TERMINAL_WIDTH + xpos];
+}
+
+// installs driver
+void installTerminal(uint8_t cursorSize)
+{
+	uint8_t fontheight = 16;
+	
+	setMaximumScanLine(fontheight-1);
+	enableCursor(fontheight - cursorSize - 3, fontheight - 3);
+	setColor(WHITE, BLACK);
 }
