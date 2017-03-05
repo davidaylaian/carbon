@@ -6,8 +6,8 @@ const volatile size_t TERMINAL_HEIGHT	= 25;
 volatile uint16_t* vidmem = (uint16_t*) 0xB8000;
 uint8_t terminal_color;
 
-/* Please refer to the FreeVGA documentation	*/
-/* project for details on the static functions.	*/
+/* Please refer to the FreeVGA project for	*/
+/* details on the following three functions.	*/
 
 static void setMaximumScanLine(uint8_t fontheight)
 {
