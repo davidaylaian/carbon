@@ -104,7 +104,7 @@ void print(string str)
 void println(string str)
 {
 	print(str);
-	print("\n");
+	printch('\n');
 }
 
 // prints an argument list in the given format
