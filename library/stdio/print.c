@@ -5,10 +5,8 @@ size_t ypos = 0;
 
 // clears the screen
 static void cls()
-{
-	const size_t MAX_ENTRIES = getTerminalWidth() * getTerminalHeight();
-	
-	for (size_t i = 0; i < MAX_ENTRIES; i++) {
+{	
+	for (size_t i = 0; i < getTerminalWidth() * getTerminalHeight(); i++) {
 		setChar(0x0, i, 0);
 	}
 	
@@ -24,11 +22,11 @@ static void scroll()
 	
 	if (ypos+1 == getTerminalHeight())
 	{
-		const size_t WIDTH = getTerminalWidth();
-		const size_t HEIGHT = getTerminalHeight();
-		
-		for (size_t i=0; i < WIDTH * HEIGHT; i++) {
-			setChar(getChar(i+WIDTH,0), i,0);
+		for (size_t i=0; i < getTerminalWidth() * getTerminalHeight(); i++) {
+			setChar(
+				getChar(i + getTerminalWidth(), 0),
+				i, 0
+			);
 		}
 	}
 	else {

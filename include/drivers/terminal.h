@@ -5,6 +5,25 @@
 #include <stddef.h>
 #include <stdint.h>
 
+/* I feel like there might be something wrong about	*/
+/* what I'm doing here, but there are no warnings	*/
+/* or errors. Please submit an issue if you see		*/
+/* something wrong here or anywhere else. Thanks!	*/
+
+// terminal size
+static const volatile size_t TERMINAL_WIDTH	= 80;
+static const volatile size_t TERMINAL_HEIGHT	= 25;
+
+// returns width of terminal
+static inline size_t getTerminalWidth() {
+	return TERMINAL_WIDTH;
+}
+
+// returns height of terminal
+static inline size_t getTerminalHeight() {
+	return TERMINAL_HEIGHT;
+}
+
 // color constants
 enum TERMINAL_COLOR {
 	BLACK = 0,
@@ -30,8 +49,6 @@ enum TERMINAL_COLOR {
 #define CRCT_DATA	0x3D5
 
 // function prototypes
-extern size_t getTerminalWidth();
-extern size_t getTerminalHeight();
 extern void updateCursor(size_t xpos, size_t ypos);
 extern void setColor(enum TERMINAL_COLOR fgcolor, enum TERMINAL_COLOR bgcolor);
 extern void setChar(char c, size_t xpos, size_t ypos);
