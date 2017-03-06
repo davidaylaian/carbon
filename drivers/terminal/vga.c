@@ -22,10 +22,10 @@ static void disableCursor() {
 static void enableCursor(uint8_t top, uint8_t bottom)
 {
 	outb(0x3D4, 0x0A);
-	outb(0x3D5, inb(0x3D5) & 0xC0 | top);
+	outb(0x3D5, (inb(0x3D5) & 0xC0) | top);
 	
 	outb(0x3D4, 0x0B);
-	outb(0x3D5, inb(0x3E0) & 0xE0 | bottom);
+	outb(0x3D5, (inb(0x3E0) & 0xE0) | bottom);
 }
 
 // sets cursor location to xpos, ypos
