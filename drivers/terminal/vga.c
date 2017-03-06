@@ -2,6 +2,7 @@
 
 // variables
 volatile uint16_t* vidmem = (uint16_t*) 0xB8000;
+const uint8_t fontheight = 16;
 uint8_t terminal_color;
 
 /* Please refer to the FreeVGA project for	*/
@@ -61,9 +62,11 @@ char getChar(size_t xpos, size_t ypos)
 // installs driver
 void installTerminal(uint8_t cursorSize)
 {
-	uint8_t fontheight = 16;
-	
-	setMaximumScanLine(fontheight-1);
-	enableCursor(fontheight - cursorSize - 3, fontheight - 3);
+	if (cursorSize == 0) disableCursor();
+	else {
+		setMaximumScanLine(fontheight-1);
+		enableCursor(fontheight - cursorSize - 3, fontheight - 3);
+	}
+		
 	setColor(WHITE, BLACK);
 }
