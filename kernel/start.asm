@@ -1,3 +1,7 @@
+;********************************************
+; start.asm - "where things start off scarce"
+;********************************************
+
 ALIGN 4
 mboot:
 	; define constants
