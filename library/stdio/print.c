@@ -98,13 +98,6 @@ void print(string str)
 	updateCursor(xpos, ypos);
 }
 
-// prints a string and a newline
-void println(string str)
-{
-	print(str);
-	printch('\n');
-}
-
 // prints an argument list in the given format
 void printf(string format, ...)
 {

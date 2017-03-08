@@ -12,6 +12,5 @@
 // print to stdout
 extern void print(string str);
 extern void printf(string format, ...);
-extern void println(string str);
 
 #endif
