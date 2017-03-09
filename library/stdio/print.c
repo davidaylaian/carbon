@@ -4,7 +4,7 @@ size_t xpos = 0;
 size_t ypos = 0;
 
 // clears the screen
-static void cls()
+static void cls()		// the void is infinite
 {	
 	for (size_t i = 0; i < getTerminalWidth() * getTerminalHeight(); i++) {
 		setChar(0x0, i, 0);
