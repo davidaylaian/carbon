@@ -5,11 +5,6 @@
 #include <stddef.h>
 #include <stdint.h>
 
-/* I feel like there might be something wrong about	*/
-/* what I'm doing here, but there are no warnings	*/
-/* or errors. Please submit an issue if you see		*/
-/* something wrong here or anywhere else. Thanks!	*/
-
 // terminal size
 static const volatile size_t TERMINAL_WIDTH	= 80;
 static const volatile size_t TERMINAL_HEIGHT	= 25;
