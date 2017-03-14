@@ -1,9 +1,9 @@
 # object files
 OBJS=				\
-print.o				\
+printf.o			\
 
 build:
-	$(CC) $(CFLAGS) print.c		-o print.o
+	$(CC) $(CFLAGS) printf.c	-o printf.o
 
 clean:
 	rm -f $(OBJS)

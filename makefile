@@ -24,7 +24,7 @@ OBJS=				\
 drivers/terminal/vga.o		\
 library/string/strcmp.o		\
 library/string/strlen.o		\
-library/stdio/print.o		\
+library/stdio/printf.o		\
 kernel/start.o			\
 kernel/main.o			\
 
