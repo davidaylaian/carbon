@@ -13,4 +13,9 @@
 extern void print(string str);
 extern void printf(string format, ...);
 
+// prints a string and a newline
+inline void println(string str) {
+	printf("%s\n", str);
+}
+
 #endif
