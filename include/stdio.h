@@ -11,6 +11,7 @@
 
 // print to stdout
 extern void print(string str);
+extern void vprintf(string format, va_list args);
 extern void printf(string format, ...);
 
 // prints a string and a newline

@@ -98,12 +98,10 @@ void print(string str)
 	updateCursor(xpos, ypos);
 }
 
-// prints an argument list in the given format
-void printf(string format, ...)
+// prints a va_list argument list in the given format
+void vprintf(string format, va_list args)
 {
 	const size_t length = strlen(format);
-	va_list args;
-	va_start(args, format);
 	
 	// for every character in string
 	for (size_t i=0; i < length; i++)
@@ -140,5 +138,13 @@ void printf(string format, ...)
 	}
 	
 	updateCursor(xpos, ypos);
+}
+
+// prints an ellipsis argument list in the given format
+void printf(string format, ...)
+{
+	va_list args;
+	va_start(args, format);
+	vprintf(format, args);
 	va_end(args);
 }
