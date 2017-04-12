@@ -149,6 +149,12 @@ void printf(string format, ...)
 	va_end(args);
 }
 
+// prints a string and a newline
+void println(string str) {
+	print(str);
+	print("\n");
+}
+
 // prints a va_list argument list in the given format and a newline
 void vprintfln(string format, va_list args) {
 	vprintf(format, args);

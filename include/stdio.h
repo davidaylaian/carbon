@@ -13,12 +13,10 @@
 extern void print(string str);
 extern void vprintf(string format, va_list args);
 extern void printf(string format, ...);
+
+// print to stdout with a newline
+extern void println(string str);
 extern void vprintfln(string format, va_list args);
 extern void printfln(string format, ...);
-
-// prints a string and a newline
-inline void println(string str) {
-	printf("%s\n", str);
-}
 
 #endif
