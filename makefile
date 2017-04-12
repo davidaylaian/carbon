@@ -20,14 +20,14 @@ export CFLAGS=-nostdlib -std=gnu99 -ffreestanding -O2 -Wall -Wextra -nostdinc -f
 export LDFLAGS=-ffreestanding -O3 -nostdlib -lgcc
 
 # object files
-OBJS=			\
-arch/x86/asm.o		\
-drivers/terminal/vga.o	\
-library/string/strcmp.o	\
-library/string/strlen.o	\
-library/stdio/printf.o	\
-kernel/start.o		\
-kernel/main.o		\
+OBJS=				\
+arch/x86/asm.o			\
+drivers/terminal/vga.o		\
+library/string/strcmp.o		\
+library/string/strlen.o		\
+library/stdio/printf.o		\
+kernel/start.o			\
+kernel/main.o			\
 
 all:
 	make build
