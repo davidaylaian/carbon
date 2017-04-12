@@ -20,13 +20,14 @@ export CFLAGS=-nostdlib -std=gnu99 -ffreestanding -O2 -Wall -Wextra -nostdinc -f
 export LDFLAGS=-ffreestanding -O3 -nostdlib -lgcc
 
 # object files
-OBJS=				\
-drivers/terminal/vga.o		\
-library/string/strcmp.o		\
-library/string/strlen.o		\
-library/stdio/printf.o		\
-kernel/start.o			\
-kernel/main.o			\
+OBJS=			\
+arch/x86/asm.o		\
+drivers/terminal/vga.o	\
+library/string/strcmp.o	\
+library/string/strlen.o	\
+library/stdio/printf.o	\
+kernel/start.o		\
+kernel/main.o		\
 
 all:
 	make build
@@ -38,14 +39,10 @@ build:
 	mkdir -p iso/boot/grub
 	cp grub.cfg iso/boot/grub/grub.cfg
 	
-	# drivers
-	$(MAKE) -C drivers build
-	
-	# library
-	$(MAKE) -C library build
-	
-	# kernel
-	$(MAKE) -C kernel build
+	$(MAKE) -C arch build		# hal
+	$(MAKE) -C drivers build	# drivers
+	$(MAKE) -C library build	# library
+	$(MAKE) -C kernel build		# kernel
 	
 	# kernel.bin
 	$(CC) $(LDFLAGS) -T kernel/link.ld -o iso/boot/kernel.bin $(OBJS)
@@ -59,6 +56,7 @@ vm:
 clean:
 	rm -rf iso
 	rm -f CarbonOS.iso
+	$(MAKE) -C arch clean
 	$(MAKE) -C drivers clean
 	$(MAKE) -C library clean
 	$(MAKE) -C kernel clean

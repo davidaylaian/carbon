@@ -1,7 +1,7 @@
 #ifndef TERMINAL_H
 #define TERMINAL_H
 
-#include <asm.h>
+#include <hal.h>
 #include <stddef.h>
 #include <stdint.h>
 
