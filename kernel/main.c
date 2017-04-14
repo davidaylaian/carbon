@@ -1,3 +1,8 @@
-#include <drivers/terminal.h>
+#include <hal.h>
+#include <stdio.h>
 
-void kmain() {}
+void kmain()
+{
+	installTerminal(1);
+	hal_install();
+}

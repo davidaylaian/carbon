@@ -22,6 +22,9 @@ export LDFLAGS=-ffreestanding -O3 -nostdlib -lgcc
 # object files
 OBJS=				\
 arch/x86/asm.o			\
+arch/x86/gdt_load.o		\
+arch/x86/gdt.o			\
+arch/x86/hal.o			\
 drivers/terminal/vga.o		\
 library/string/strcmp.o		\
 library/string/strlen.o		\
