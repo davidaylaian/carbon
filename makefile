@@ -9,7 +9,7 @@
 
 
 # executables
-export ASM=nasm
+export AS=nasm
 export CC=i686-elf-gcc
 export LINK=i686-elf-gcc
 export QEMU=qemu-system-i386
