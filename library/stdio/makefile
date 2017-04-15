@@ -1,6 +1,5 @@
-# object files
-OBJS=				\
-printf.o			\
+OBJS=		\
+printf.o	\
 
 build:
 	$(CC) $(CFLAGS) printf.c	-o printf.o

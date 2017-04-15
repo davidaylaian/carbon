@@ -1,7 +1,6 @@
-# object files
-OBJS=				\
-strcmp.o			\
-strlen.o			\
+OBJS=		\
+strcmp.o	\
+strlen.o	\
 
 build:
 	$(CC) $(CFLAGS) strcmp.c	-o strcmp.o

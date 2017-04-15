@@ -1,6 +1,6 @@
-OBJS=			\
-start.o			\
-main.o			\
+OBJS=		\
+start.o		\
+main.o		\
 
 build:
 	$(AS) $(ASFLAGS) start.asm	-o start.o
