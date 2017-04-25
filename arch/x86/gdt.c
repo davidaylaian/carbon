@@ -31,7 +31,7 @@ struct gdtr {
 // the global descriptor table is an array of descriptors
 struct gdt_descriptor gdt[MAX_DESCRIPTORS];
 
-// gdtr is used to set gdtr register to point to the gdt
+// gdtr is used to set the gdtr register to point to the gdt
 struct gdtr gdtr;
 
 void gdt_set_descriptor (uint32_t i, uint64_t base, uint64_t limit, uint8_t access, uint8_t grand)
