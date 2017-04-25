@@ -2,7 +2,6 @@
 
 #define MAX_DESCRIPTORS 3
 
-// found in gdt.asm
 extern void gdt_load();
 
 /* Note: __attribute__((packed))			*/
