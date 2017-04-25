@@ -4,7 +4,7 @@ extern void gdt_install();
 extern void idt_install();
 
 void setvect(uint8_t intn, uint64_t handler) {
-	install_ir (intn, handler, 0x8E, 0x08);
+	install_ir(intn, handler, 0x8E, 0x08);
 }
 
 // install hardware abstraction layer

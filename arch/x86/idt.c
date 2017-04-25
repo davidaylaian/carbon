@@ -56,8 +56,8 @@ void install_ir (uint32_t i, uint64_t base, uint16_t flags, uint16_t sel)
 void idt_install()
 {
 	// set up idtr
-	idtr.limit = sizeof (struct idt_descriptor) * MAX_INTERRUPTS-1;
-	idtr.base  = (uint32_t)& idt[0];
+	idtr.limit = sizeof(struct idt_descriptor) * MAX_INTERRUPTS-1;
+	idtr.base  = (uint32_t) & idt[0];
 	
 	// register default handlers
 	for (size_t i=0; i<MAX_INTERRUPTS; i++)
