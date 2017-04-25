@@ -5,4 +5,6 @@ void kmain()
 {
 	installTerminal(1);
 	hal_install();
+	printf("\f");
+	enable();
 }
