@@ -2,6 +2,7 @@ OBJS=		\
 asm.o		\
 gdt_load.o	\
 gdt.o		\
+hal.o		\
 
 build:
 	$(CC) $(CFLAGS)  asm.c		-o asm.o
