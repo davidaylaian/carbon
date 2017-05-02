@@ -30,6 +30,7 @@ drivers/terminal/vga.o		\
 library/string/strcmp.o		\
 library/string/strlen.o		\
 library/stdio/printf.o		\
+library/stdio/printfln.o	\
 kernel/start.o			\
 kernel/main.o			\
 
