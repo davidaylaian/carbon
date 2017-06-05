@@ -39,7 +39,7 @@ noreturn void default_handler()
 }
 
 // installs an interrupt routine (ir)
-void install_ir (uint32_t i, uint64_t base, uint16_t flags, uint16_t sel)
+void install_ir(uint32_t i, uint64_t base, uint16_t flags, uint16_t sel)
 {
 	// set base address
 	idt[i].baseLo	= base & 0xFFFF;
