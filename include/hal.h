@@ -13,7 +13,7 @@ extern uint8_t inb(uint16_t port);
 extern void outb(uint16_t port, uint8_t val);
 
 // interrupts
-void setvect(uint8_t intn, uint64_t handler);
+extern void setvect(uint8_t intn, uint64_t handler);
 
 // install hardware abstraction layer
 extern void hal_install();
