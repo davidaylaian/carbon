@@ -60,7 +60,7 @@ char getChar(size_t xpos, size_t ypos)
 }
 
 // installs driver
-void installTerminal(uint8_t cursorSize)
+void terminal_install(uint8_t cursorSize, enum TERMINAL_COLOR fgcolor, enum TERMINAL_COLOR bgcolor)
 {
 	if (cursorSize == 0) disableCursor();
 	else {
@@ -68,5 +68,5 @@ void installTerminal(uint8_t cursorSize)
 		enableCursor(fontheight - cursorSize - 3, fontheight - 3);
 	}
 		
-	setColor(WHITE, BLACK);
+	setColor(fgcolor, bgcolor);
 }

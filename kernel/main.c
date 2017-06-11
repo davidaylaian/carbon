@@ -3,7 +3,7 @@
 
 void kmain()
 {
-	installTerminal(1);
+	terminal_install(1, WHITE, BLACK);
 	hal_install();
 	printf("\f");
 	enable();
