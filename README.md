@@ -18,11 +18,11 @@ CarbonOS is organized into four sections:
 #### Step 1: [Clone](https://github.com/DavidAylaian/CarbonOS/archive/master.zip) and extract the repository.
 
 #### Step 2: Install dependencies
-* **GNU Make:** `sudo apt-get install make`
-* **NASM:** `sudo apt-get install nasm`
-* **GCC Cross-Compiler:** [`http://wiki.osdev.org/GCC_Cross-Compiler`](http://wiki.osdev.org/GCC_Cross-Compiler)
-* **GNU Xorriso:** `sudo apt-get install xorriso`
-* **QEMU**: `sudo apt-get install qemu`
+* GNU Make: `sudo apt-get install make`
+* NASM: `sudo apt-get install nasm`
+* GCC Cross-Compiler: [`http://wiki.osdev.org/GCC_Cross-Compiler`](http://wiki.osdev.org/GCC_Cross-Compiler)
+* GNU Xorriso: `sudo apt-get install xorriso`
+* QEMU: `sudo apt-get install qemu`
 
 #### Step 3: Build the system
 Open a terminal and `cd` to the directory you extracted the repository to. The system can be compiled via. `make`.
