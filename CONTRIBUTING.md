@@ -17,3 +17,6 @@ Consistency is the number one rule. Look at the code surrounding yours and try t
 
 #### Use Tabs for Indentation
 Please configure your editor to use tabs equivalent to eight spaces to indent blocks of code. Never use spaces.
+
+#### Name Things Well
+Make names for your variables, functions, data structures, etc. that properly describe what they do. One-letter variables are acceptable for counters and nothing else.
