@@ -13,7 +13,7 @@ CarbonOS is organized into four sections:
 * **The [Kernel](kernel):** the kernel that uses the library to provide the end-user experience. In the future, this will be split up into two more sections: the kernel and the shell.
 
 ## Compiling
-###### Note: section was written for use on [Debian-based](https://www.debian.org) systems. Please submit us an [issue](issues) for instructions on how to build CarbonOS on other systems.
+###### Note: this section was written for use on [Debian-based](https://www.debian.org) systems. Please submit us an [issue](issues) for instructions on how to build CarbonOS on other systems.
 
 #### Step 1: Clone the repository
 
