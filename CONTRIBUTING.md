@@ -12,7 +12,7 @@ Create an issue with a description of the change you would like to see us make. 
 
 ## Reporting a Bug
 Create an issue describing the bug. When applicable, try to include:
-- What you were doing when you found the bug
-- How to reproduce the bug and how reliably it happens
-- Basic details about the hardware/emulator used
-- Screenshots of the bug in action
+- What you were doing when you found the bug.
+- How to reproduce the bug and how reliably it happens.
+- Basic details about the hardware/emulator used.
+- Screenshots of the bug in action.
