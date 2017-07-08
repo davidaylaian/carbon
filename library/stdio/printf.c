@@ -87,7 +87,7 @@ static void printch(char c)
 }
 
 // prints a string to stdout
-void print(string str)
+void print(char* str)
 {
 	const size_t length = strlen(str);
 	
@@ -99,7 +99,7 @@ void print(string str)
 }
 
 // prints a va_list argument list in the given format
-void vprintf(string format, va_list args)
+void vprintf(char* format, va_list args)
 {
 	const size_t length = strlen(format);
 	
@@ -117,7 +117,7 @@ void vprintf(string format, va_list args)
 				}
 				
 				case 's': {				// string
-					print(va_arg(args, string));
+					print(va_arg(args, char*));
 					i++;
 					break;
 				}
@@ -141,7 +141,7 @@ void vprintf(string format, va_list args)
 }
 
 // prints an ellipsis argument list in the given format
-void printf(string format, ...)
+void printf(char* format, ...)
 {
 	va_list args;
 	va_start(args, format);

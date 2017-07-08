@@ -10,13 +10,13 @@
 #define EOF -1
 
 // print to stdout
-extern void print(string str);
-extern void vprintf(string format, va_list args);
-extern void printf(string format, ...);
+extern void print(char* str);
+extern void vprintf(char* format, va_list args);
+extern void printf(char* format, ...);
 
 // print to stdout with a newline
-extern void println(string str);
-extern void vprintfln(string format, va_list args);
-extern void printfln(string format, ...);
+extern void println(char* str);
+extern void vprintfln(char* format, va_list args);
+extern void printfln(char* format, ...);
 
 #endif

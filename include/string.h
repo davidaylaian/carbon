@@ -5,6 +5,6 @@
 #include <stdint.h>
 
 extern int strcmp(const char *str1, const char *str2);
-extern size_t strlen(string str);
+extern size_t strlen(const char* str);
 
 #endif

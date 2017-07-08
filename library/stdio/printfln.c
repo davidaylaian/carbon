@@ -1,19 +1,19 @@
  #include <stdio.h>
 
  // prints a string and a newline
-void println(string str) {
+void println(char* str) {
 	print(str);
 	print("\n");
 }
 
 // prints a va_list argument list in the given format and a newline
-void vprintfln(string format, va_list args) {
+void vprintfln(char* format, va_list args) {
 	vprintf(format, args);
 	print("\n");
 }
 
 // prints an ellipsis argument list in the given format and a newline
-void printfln(string format, ...)
+void printfln(char* format, ...)
 {
 	va_list args;
 	va_start(args, format);
