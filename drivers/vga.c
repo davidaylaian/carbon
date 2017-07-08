@@ -1,4 +1,4 @@
-#include <drivers/terminal.h>
+#include <drivers/vga.h>
 
 // variables
 volatile uint16_t* vidmem = (uint16_t*) 0xB8000;

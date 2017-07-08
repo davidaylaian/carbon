@@ -1,7 +1,7 @@
 #ifndef STDIO_H
 #define STDIO_H
 
-#include <drivers/terminal.h>
+#include <drivers/vga.h>
 #include <stdarg.h>
 #include <stddef.h>
 #include <stdint.h>

@@ -1,5 +1,8 @@
+OBJS=		\
+vga.o		\
+
 build:
-	$(MAKE) -C terminal build
+	$(CC) $(CFLAGS) vga.c -o vga.o
 
 clean:
-	$(MAKE) -C terminal clean
+	rm -f $(OBJS)

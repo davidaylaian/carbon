@@ -26,7 +26,7 @@ arch/x86/gdt_load.o		\
 arch/x86/gdt.o			\
 arch/x86/hal.o			\
 arch/x86/idt.o			\
-drivers/terminal/vga.o		\
+drivers/vga.o			\
 library/string/strcmp.o		\
 library/string/strlen.o		\
 library/stdio/printf.o		\
