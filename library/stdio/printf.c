@@ -110,25 +110,29 @@ void vprintf(char* format, va_list args)
 		{
 			switch (format[i+1])
 			{
-				case 'c': {				// character
+				// character
+				case 'c': {
 					printch(va_arg(args, char));
 					i++;
 					break;
 				}
 				
-				case 's': {				// string
+				// string
+				case 's': {
 					print(va_arg(args, char*));
 					i++;
 					break;
 				}
 				
-				case '%': {				// %% = %
+				// %% = %
+				case '%': {
 					printch('%');
 					i++;
 					break;
 				}
 				
-				default: {				// invalid format; do nothing
+				// invalid format
+				default: {
 					i++;
 					break;
 				}

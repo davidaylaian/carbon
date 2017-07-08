@@ -1,13 +1,15 @@
  #include <stdio.h>
 
  // prints a string and a newline
-void println(char* str) {
+void println(char* str)
+{
 	print(str);
 	print("\n");
 }
 
 // prints a va_list argument list in the given format and a newline
-void vprintfln(char* format, va_list args) {
+void vprintfln(char* format, va_list args)
+{
 	vprintf(format, args);
 	print("\n");
 }
