@@ -24,8 +24,9 @@ OBJS=				\
 arch/x86/asm.o			\
 arch/x86/gdt_load.o		\
 arch/x86/gdt.o			\
-arch/x86/hal.o			\
 arch/x86/idt.o			\
+arch/x86/pic.o			\
+arch/x86/hal.o			\
 drivers/vga.o			\
 library/string/strcmp.o		\
 library/string/strlen.o		\
