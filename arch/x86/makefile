@@ -7,8 +7,9 @@ pic.o		\
 hal.o		\
 
 build:
-	$(CC) $(CFLAGS)  asm.c		-o asm.o
 	$(AS) $(ASFLAGS) gdt_load.asm	-o gdt_load.o
+	$(AS) $(ASFLAGS) wrappers.asm 	-o wrappers.o
+	$(CC) $(CFLAGS)  asm.c		-o asm.o
 	$(CC) $(CFLAGS)  gdt.c		-o gdt.o
 	$(CC) $(CFLAGS)  idt.c		-o idt.o
 	$(CC) $(CFLAGS)  pic.c		-o pic.o

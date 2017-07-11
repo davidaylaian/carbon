@@ -12,7 +12,7 @@
 export AS=nasm
 export CC=i686-elf-gcc
 export LINK=i686-elf-gcc
-export QEMU=qemu-system-i386
+export QEMU=qemu-system-x86_64
 
 # flags
 export ASFLAGS=-felf32
@@ -26,6 +26,7 @@ arch/x86/gdt_load.o		\
 arch/x86/gdt.o			\
 arch/x86/idt.o			\
 arch/x86/pic.o			\
+arch/x86/wrappers.o		\
 arch/x86/hal.o			\
 drivers/vga.o			\
 library/string/strcmp.o		\
