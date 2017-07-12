@@ -34,7 +34,7 @@ extern void isr_wrapper_29();
 extern void isr_wrapper_30();
 extern void isr_wrapper_31();
 
-void isrs_install()
+void isr_install()
 {
 	// install isrs into their corresponding slots in the idt
 	setvect(0, (unsigned)isr_wrapper_0);

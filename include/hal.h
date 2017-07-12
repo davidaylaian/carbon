@@ -18,7 +18,7 @@ extern void idt_install();
 extern void pic_remap();
 extern void install_ir(uint32_t i, uint64_t base, uint16_t flags, uint16_t sel);
 extern void setvect(uint8_t intn, uint64_t handler);
-extern void isrs_install();
+extern void isr_install();
 
 // install hardware abstraction layer
 extern void hal_install();
