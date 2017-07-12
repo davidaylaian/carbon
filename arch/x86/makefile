@@ -1,9 +1,11 @@
 OBJS=		\
 asm.o		\
+wrappers.o	\
 gdt_load.o	\
 gdt.o		\
 idt.o		\
 pic.o		\
+isrs.o		\
 hal.o		\
 
 build:
@@ -13,6 +15,7 @@ build:
 	$(CC) $(CFLAGS)  gdt.c		-o gdt.o
 	$(CC) $(CFLAGS)  idt.c		-o idt.o
 	$(CC) $(CFLAGS)  pic.c		-o pic.o
+	$(CC) $(CFLAGS)  isrs.c		-o isrs.o
 	$(CC) $(CFLAGS)  hal.c		-o hal.o
 
 clean:

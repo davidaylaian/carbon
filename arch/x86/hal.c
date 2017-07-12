@@ -10,4 +10,5 @@ void hal_install()
 	gdt_install();
 	idt_install();
 	pic_remap();
+	isrs_install();
 }

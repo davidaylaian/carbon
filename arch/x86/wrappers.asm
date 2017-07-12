@@ -18,7 +18,7 @@ isr_wrapper:
 	mov eax, esp
 	push eax
 	
-	; call the handler
+	; call the handler (found in isrs.c)
 	mov eax, isr_handler
 	call eax
 	
