@@ -72,5 +72,5 @@ void isr_install()
 }
 
 void isr_handler() {
-	printf("Received isr");
+	printfln("Received isr");
 }
