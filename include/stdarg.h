@@ -6,6 +6,7 @@
 // This file is based on code found at http://www.brokenthorn.com/Resources/OSDev14.html
 
 typedef uint8_t* va_list;
+
 #define STACKITEM sizeof(int)
 
 #define	VA_SIZE(TYPE)			\
