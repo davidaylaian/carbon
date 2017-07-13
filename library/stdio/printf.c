@@ -149,6 +149,6 @@ void printf(char* format, ...)
 {
 	va_list args;
 	va_start(args, format);
-	vprintfln(format, args);
+	vprintf(format, args);
 	va_end(args);
 }
