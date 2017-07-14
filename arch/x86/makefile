@@ -6,6 +6,7 @@ gdt.o		\
 idt.o		\
 pic.o		\
 isr.o		\
+irq.o		\
 hal.o		\
 
 build:
@@ -16,6 +17,7 @@ build:
 	$(CC) $(CFLAGS)  idt.c		-o idt.o
 	$(CC) $(CFLAGS)  pic.c		-o pic.o
 	$(CC) $(CFLAGS)  isr.c		-o isr.o
+	$(CC) $(CFLAGS)  irq.c		-o irq.o
 	$(CC) $(CFLAGS)  hal.c		-o hal.o
 
 clean:

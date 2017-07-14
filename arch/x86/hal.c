@@ -11,4 +11,5 @@ void hal_install()
 	idt_install();
 	pic_remap();
 	isr_install();
+	irq_install();
 }

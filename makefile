@@ -28,6 +28,7 @@ arch/x86/gdt.o			\
 arch/x86/idt.o			\
 arch/x86/pic.o			\
 arch/x86/isr.o			\
+arch/x86/irq.o			\
 arch/x86/hal.o			\
 drivers/vga.o			\
 library/string/strcmp.o		\
