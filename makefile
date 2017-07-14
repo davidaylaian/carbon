@@ -34,6 +34,7 @@ drivers/vga.o			\
 library/string/strcmp.o		\
 library/string/strlen.o		\
 library/string/strrev.o		\
+library/string/itoa.o		\
 library/stdio/printf.o		\
 library/stdio/printfln.o	\
 kernel/arch/x86/start.o		\
