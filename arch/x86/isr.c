@@ -34,9 +34,9 @@ extern void isr_wrapper_29();
 extern void isr_wrapper_30();
 extern void isr_wrapper_31();
 
+// install isrs into their corresponding slots in the idt
 void isr_install()
 {
-	// install isrs into their corresponding slots in the idt
 	setvect(0, (unsigned)isr_wrapper_0);
 	setvect(1, (unsigned)isr_wrapper_1);
 	setvect(2, (unsigned)isr_wrapper_2);
@@ -71,6 +71,15 @@ void isr_install()
 	setvect(31, (unsigned)isr_wrapper_31);
 }
 
-void isr_handler() {
-	printfln("Received isr");
+struct regs
+{
+	uint32_t gs, fs, es, ds;
+	uint32_t edi, esi, ebp, esp, ebx, edx, ecx, eax;
+	uint32_t intn, error_code;
+	uint32_t eip, cs, eflags, useresp, ss;
+};
+
+// handles an isr
+void isr_handler(struct regs *val) {
+	printfln("Received isr %d, error code %b", val->intn, val->error_code);
 }

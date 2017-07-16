@@ -39,7 +39,15 @@ void irq_install()
 	setvect(47, (unsigned)irq_wrapper_15);
 }
 
+struct regs
+{
+	uint32_t gs, fs, es, ds;
+	uint32_t edi, esi, ebp, esp, ebx, edx, ecx, eax;
+	uint32_t intn;
+	uint32_t eip, cs, eflags, useresp, ss;
+};
+
 // handles an irq
-void irq_handler() {
-	printfln("Received irq");
+void irq_handler(struct regs *val) {
+	printfln("Received irq %d", val->intn);
 }
