@@ -110,34 +110,64 @@ void vprintf(char* format, va_list args)
 		{
 			switch (format[i+1])
 			{
+				// %% = %
+				case '%': {
+					printch('%');
+					break;
+				}
+				
 				// character
 				case 'c': {
 					printch(va_arg(args, char));
-					i++;
 					break;
 				}
 				
 				// string
 				case 's': {
 					print(va_arg(args, char*));
-					i++;
 					break;
 				}
 				
-				// %% = %
-				case '%': {
-					printch('%');
-					i++;
+				// decimal
+				case 'i':
+				case 'd': {
+					char buf[8] = {0};
+					print(itoa(va_arg(args, int), buf, 10));
+					break;
+				}
+				
+				// hex
+				case 'X':
+				case 'x': {
+					char buf[8] = {0};
+					print("0x");
+					print(itoa(va_arg(args, int), buf, 16));
+					break;
+				}
+				
+				// binary
+				case 'b': {
+					char buf[8] = {0};
+					print("0b");
+					print(itoa(va_arg(args, int), buf, 2));
+					break;
+				}
+				
+				// octal
+				case 'o': {
+					char buf[8] = {0};
+					printch('0');
+					print(itoa(va_arg(args, int), buf, 8));
 					break;
 				}
 				
 				// invalid format
-				default: {
-					i++;
-					break;
-				}
+				default: break;
 			}
+			
+			i++;
 		}
+		
 		else printch(format[i]);
 	}
 	
