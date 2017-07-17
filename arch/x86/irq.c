@@ -1,4 +1,5 @@
 #include <hal.h>
+#include "regs.h"
 
 // see wrappers.asm
 extern void irq_wrapper_0();
@@ -39,15 +40,12 @@ void irq_install()
 	setvect(47, (unsigned)irq_wrapper_15);
 }
 
-struct regs
-{
-	uint32_t gs, fs, es, ds;
-	uint32_t edi, esi, ebp, esp, ebx, edx, ecx, eax;
-	uint32_t intn;
-	uint32_t eip, cs, eflags, useresp, ss;
-};
 
 // handles an irq
-void irq_handler(struct regs *val) {
-	printfln("Received irq %d", val->intn);
+void irq_handler(struct regs *val)
+{
+	printfln("Received irq %d", val->intn - 32);
+	uint8_t scan_code = inb(0x60);
+	if(val->intn > 39) outb(0xA0, 0x20);
+	outb(0x20, 0x20);
 }

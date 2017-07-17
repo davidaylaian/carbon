@@ -14,16 +14,14 @@ isr_wrapper:
 	mov fs, ax
 	mov gs, ax
 	
-	; push the stack
+	; call the handler (found in isr.c)
 	mov eax, esp
 	push eax
-	
-	; call the handler (found in isrs.c)
 	mov eax, isr_handler
 	call eax
+	pop eax
 	
 	; pop registers
-	pop eax
 	pop gs
 	pop fs
 	pop es
@@ -237,16 +235,14 @@ irq_wrapper:
 	mov fs, ax
 	mov gs, ax
 	
-	; push the stack
+	; call the handler (found in irq.c)
 	mov eax, esp
 	push eax
-	
-	; call the handler
 	mov eax, irq_handler
 	call eax
+	pop eax
 	
 	; pop registers
-	pop eax
 	pop gs
 	pop fs
 	pop es
@@ -277,79 +273,95 @@ global irq_wrapper_15
 irq_wrapper_0:
 	cli
 	push byte 0
+	push byte 32
 	jmp isr_wrapper
 
 irq_wrapper_1:
 	cli
-	push byte 1
+	push byte 0
+	push byte 33
 	jmp irq_wrapper
 
 irq_wrapper_2:
 	cli
-	push byte 2
+	push byte 0
+	push byte 34
 	jmp irq_wrapper
 
 irq_wrapper_3:
 	cli
-	push byte 3
+	push byte 0
+	push byte 35
 	jmp irq_wrapper
 
 irq_wrapper_4:
 	cli
-	push byte 4
+	push byte 0
+	push byte 36
 	jmp irq_wrapper
 
 irq_wrapper_5:
 	cli
-	push byte 5
+	push byte 0
+	push byte 37
 	jmp irq_wrapper
 
 irq_wrapper_6:
 	cli
-	push byte 6
+	push byte 0
+	push byte 38
 	jmp irq_wrapper
 
 irq_wrapper_7:
 	cli
-	push byte 7
+	push byte 0
+	push byte 39
 	jmp irq_wrapper
 
 irq_wrapper_8:
 	cli
-	push byte 8
+	push byte 0
+	push byte 40
 	jmp irq_wrapper
 
 irq_wrapper_9:
 	cli
-	push byte 9
+	push byte 0
+	push byte 41
 	jmp irq_wrapper
 
 irq_wrapper_10:
 	cli
-	push byte 10
+	push byte 0
+	push byte 42
 	jmp irq_wrapper
 
 irq_wrapper_11:
 	cli
-	push byte 11
+	push byte 0
+	push byte 43
 	jmp irq_wrapper
 
 irq_wrapper_12:
 	cli
-	push byte 12
+	push byte 0
+	push byte 44
 	jmp irq_wrapper
 
 irq_wrapper_13:
 	cli
-	push byte 13
+	push byte 0
+	push byte 45
 	jmp irq_wrapper
 
 irq_wrapper_14:
 	cli
-	push byte 14
+	push byte 0
+	push byte 46
 	jmp irq_wrapper
 
 irq_wrapper_15:
 	cli
-	push byte 15
+	push byte 0
+	push byte 47
 	jmp irq_wrapper

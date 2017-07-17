@@ -1,4 +1,5 @@
 #include <hal.h>
+#include "regs.h"
 
 // see wrappers.asm
 extern void isr_wrapper_0();
@@ -71,15 +72,7 @@ void isr_install()
 	setvect(31, (unsigned)isr_wrapper_31);
 }
 
-struct regs
-{
-	uint32_t gs, fs, es, ds;
-	uint32_t edi, esi, ebp, esp, ebx, edx, ecx, eax;
-	uint32_t intn, error_code;
-	uint32_t eip, cs, eflags, useresp, ss;
-};
-
 // handles an isr
 void isr_handler(struct regs *val) {
-	printfln("Received isr %d, error code %b", val->intn, val->error_code);
+	printfln("Received isr %d, error code %x", val->intn, val->error_code);
 }
