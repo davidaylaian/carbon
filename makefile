@@ -30,6 +30,7 @@ arch/x86/pic.o			\
 arch/x86/isr.o			\
 arch/x86/irq.o			\
 arch/x86/hal.o			\
+drivers/keyboard.o		\
 drivers/vga.o			\
 library/string/strcmp.o		\
 library/string/strlen.o		\

@@ -44,8 +44,9 @@ void irq_install()
 // handles an irq
 void irq_handler(struct regs *val)
 {
-	printfln("Received irq %d", val->intn - 32);
-	uint8_t scan_code = inb(0x60);
+	if(val->intn == 33) keyboard_handler();
+	else printfln("Received irq %d", val->intn - 32);
+	
 	if(val->intn > 39) outb(0xA0, 0x20);
 	outb(0x20, 0x20);
 }
