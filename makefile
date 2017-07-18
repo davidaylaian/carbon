@@ -21,15 +21,15 @@ export LDFLAGS=-ffreestanding -O3 -nostdlib -lgcc
 
 # object files
 OBJS=				\
-arch/x86/gdt_load.o		\
-arch/x86/wrappers.o		\
-arch/x86/asm.o			\
-arch/x86/gdt.o			\
-arch/x86/idt.o			\
-arch/x86/pic.o			\
-arch/x86/isr.o			\
-arch/x86/irq.o			\
-arch/x86/hal.o			\
+arch/i386/gdt_load.o		\
+arch/i386/wrappers.o		\
+arch/i386/asm.o			\
+arch/i386/gdt.o			\
+arch/i386/idt.o			\
+arch/i386/pic.o			\
+arch/i386/isr.o			\
+arch/i386/irq.o			\
+arch/i386/hal.o			\
 drivers/keyboard.o		\
 drivers/vga.o			\
 library/string/strcmp.o		\
@@ -38,7 +38,7 @@ library/string/strrev.o		\
 library/string/itoa.o		\
 library/stdio/printf.o		\
 library/stdio/printfln.o	\
-kernel/arch/x86/start.o		\
+kernel/arch/i386/start.o	\
 kernel/main.o			\
 
 all:
