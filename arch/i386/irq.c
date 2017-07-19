@@ -40,13 +40,28 @@ void irq_install()
 	setvect(47, (unsigned)irq_wrapper_15);
 }
 
+// function pointers to irq handlers
+static void *irq_handlers[16] = {
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0
+};
+
+// install an irq handler
+void irq_handler_install(uint8_t irq, void(*handler)())
+{
+	irq_handlers[irq] = handler;
+}
 
 // handles an irq
 void irq_handler(struct regs *val)
 {
-	if(val->intn == 33) keyboard_handler();
+	// run handler
+	void(*handler)();
+	handler = irq_handlers[val->intn - 32];
+	if(handler) handler();
 	else printfln("Received irq %d", val->intn - 32);
 	
+	// send EOI
 	if(val->intn > 39) outb(0xA0, 0x20);
 	outb(0x20, 0x20);
 }

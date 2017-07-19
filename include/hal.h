@@ -21,6 +21,7 @@ extern void install_ir(uint32_t i, uint64_t base, uint16_t flags, uint16_t sel);
 extern void setvect(uint8_t intn, uint64_t handler);
 extern void isr_install();
 extern void irq_install();
+extern void irq_handler_install(uint8_t irq, void(*handler)());
 
 // install hardware abstraction layer
 extern void hal_install();

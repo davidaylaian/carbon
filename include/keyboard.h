@@ -4,6 +4,6 @@
 #include <hal.h>
 #include <stdint.h>
 
-extern void keyboard_handler();
+extern void keyboard_install();
 
 #endif
