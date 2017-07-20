@@ -7,12 +7,20 @@
 
 #include <keyboard.h>
 
-static void keyboard_handler()
+// converts scancode to ascii (stub)
+char scancode_to_ascii(uint8_t scancode)
 {
-	uint8_t scan_code = inb(0x60);
-	printfln("%d", scan_code);
+	return 0;
 }
 
+// handles the keyboard interrupt
+void keyboard_handler()
+{
+	keypress = scancode_to_ascii(inb(0x60));
+	printfln("%c", keypress);
+}
+
+// install the keyboard handler
 void keyboard_install()
 {
 	irq_handler_install(1, keyboard_handler);
