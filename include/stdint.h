@@ -1,3 +1,10 @@
+/**
+ * 
+ * Copyright 2017 David Aylaian
+ * https://github.com/DavidAylaian/CarbonOS/
+ * 
+ */
+
 #ifndef STDINT_H
 #define STDINT_H
 

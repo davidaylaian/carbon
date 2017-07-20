@@ -1,3 +1,10 @@
+/**
+ * 
+ * Copyright 2017 David Aylaian
+ * https://github.com/DavidAylaian/CarbonOS/
+ * 
+ */
+
 #include <hal.h>
 #include <keyboard.h>
 #include <stdio.h>

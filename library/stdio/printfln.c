@@ -1,4 +1,11 @@
- #include <stdio.h>
+/**
+ * 
+ * Copyright 2017 David Aylaian
+ * https://github.com/DavidAylaian/CarbonOS/
+ * 
+ */
+
+#include <stdio.h>
 
  // prints a string and a newline
 void println(char* str)

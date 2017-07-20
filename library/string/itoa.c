@@ -1,3 +1,13 @@
+/**
+ * 
+ * Copyright 2017 David Aylaian
+ * https://github.com/DavidAylaian/CarbonOS/
+ * 
+ * Based off of code that can be found at
+ * http://www.geeksforgeeks.org/implement-itoa/
+ * 
+ */
+
 #include <string.h>
 
 // converts interger to string

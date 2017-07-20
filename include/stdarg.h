@@ -1,9 +1,18 @@
+/**
+ * 
+ * Copyright 2017 David Aylaian
+ * https://github.com/DavidAylaian/CarbonOS/
+ * 
+ * Based on code found at
+ * http://www.brokenthorn.com/Resources/OSDev14.html
+ * Copyright 2008, BrokenThorn Entertainment, Co.
+ * 
+ */
+
 #ifndef STDARG_H
 #define STDARG_H
 
 #include <stdint.h>
-
-// This file is based on code found at http://www.brokenthorn.com/Resources/OSDev14.html
 
 typedef uint8_t* va_list;
 

@@ -1,3 +1,8 @@
+;********************************************
+; Copyright 2017 David Aylaian
+; https://github.com/DavidAylaian/CarbonOS/
+;********************************************
+
 extern gdtr
 global gdt_load
 gdt_load:
