@@ -46,43 +46,63 @@ static void printch(char c)
 {
 	switch(c)
 	{
-		case '\a': {		// alert
+		// alert
+		case '\a': {
 			// nothing for now; we have no audio drivers
 			break;
 		}
 		
-		case '\b': {		// backspace
-			xpos--;
-			setChar(' ', xpos, ypos);
+		// backspace
+		case '\b': {
+			if(xpos == 0)
+			{
+				if(ypos != 0)
+				{
+					xpos = getTerminalWidth() - 1;
+					ypos--;
+					setChar(' ', xpos, ypos);
+				}
+			}
+			else {
+				xpos--;
+				setChar(' ', xpos, ypos);
+			}
+			
 			break;
 		}
 		
-		case '\f': {		// formfeed
+		// formfeed
+		case '\f': {
 			cls();
 			break;
 		}
 		
-		case '\n': {		// newline
+		// newline
+		case '\n': {
 			scroll();
 			break;
 		}
 		
-		case '\r': {		// carriage return
+		// carriage return
+		case '\r': {
 			xpos = 0;
 			break;
 		}
 		
-		case '\t': {		// tab
+		// tab
+		case '\t': {
 			xpos += 8-(xpos % 8);
 			break;
 		}
 		
-		case '\v': {		// vertical tab
+		// vertical tab
+		case '\v': {
 			ypos += 8-(ypos % 8);
 			break;
 		}
 		
-		default: {		// normal character
+		// normal character
+		default: {
 			setChar(c, xpos, ypos);
 			xpos++;
 			break;
