@@ -8,7 +8,6 @@
 #ifndef HAL_H
 #define HAL_H
 
-#include <keyboard.h>
 #include <stdint.h>
 #include <string.h>
 #include <stdio.h>

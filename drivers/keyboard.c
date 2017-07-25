@@ -5,7 +5,7 @@
  * 
  */
 
-#include <keyboard.h>
+#include <drivers/keyboard.h>
 
 // converts scancode to ascii
 // see http://wiki.osdev.org/Keyboard#Scan_Code_Sets

@@ -5,8 +5,8 @@
  * 
  */
 
+#include <drivers/keyboard.h>
 #include <hal.h>
-#include <keyboard.h>
 #include <stdio.h>
 
 void kmain()

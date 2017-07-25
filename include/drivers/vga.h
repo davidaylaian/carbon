@@ -5,8 +5,8 @@
  * 
  */
 
-#ifndef TERMINAL_H
-#define TERMINAL_H
+#ifndef DRIVERS_TERMINAL_H
+#define DRIVERS_TERMINAL_H
 
 #include <hal.h>
 #include <stddef.h>
