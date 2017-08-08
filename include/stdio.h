@@ -8,6 +8,7 @@
 #ifndef STDIO_H
 #define STDIO_H
 
+#include <drivers/keyboard.h>
 #include <drivers/vga.h>
 #include <stdarg.h>
 #include <stddef.h>
@@ -25,5 +26,8 @@ extern void printf(char* format, ...);
 extern void println(char* str);
 extern void vprintfln(char* format, va_list args);
 extern void printfln(char* format, ...);
+
+// get from stdin
+extern char getch();
 
 #endif

@@ -36,6 +36,7 @@ library/string/strcmp.o		\
 library/string/strlen.o		\
 library/string/strrev.o		\
 library/string/itoa.o		\
+library/stdio/getchar.o		\
 library/stdio/printf.o		\
 library/stdio/printfln.o	\
 kernel/arch/i386/start.o	\
