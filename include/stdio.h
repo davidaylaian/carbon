@@ -27,7 +27,4 @@ extern void println(char* str);
 extern void vprintfln(char* format, va_list args);
 extern void printfln(char* format, ...);
 
-// get from stdin
-extern char getch();
-
 #endif

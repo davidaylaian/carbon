@@ -5,7 +5,6 @@
  * 
  */
 
-#include <drivers/keyboard.h>
 #include <hal.h>
 #include <stdio.h>
 
@@ -21,7 +20,4 @@ void kmain()
 	outb(0xa1, 0xff);
 	enable();
 	keyboard_install();
-	
-	// keyboard test
-	for (;;) printf("%c", getch());
 }
