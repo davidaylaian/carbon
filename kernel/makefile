@@ -1,9 +1,9 @@
 OBJS=		\
-main.o		\
+kmain.o		\
 
 build:
 	$(MAKE) -C arch build
-	$(CC) $(CFLAGS) main.c -o main.o
+	$(CC) $(CFLAGS) kmain.c -o kmain.o
 
 clean:
 	$(MAKE) -C arch clean

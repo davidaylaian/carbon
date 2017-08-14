@@ -39,7 +39,7 @@ library/string/itoa.o		\
 library/stdio/printf.o		\
 library/stdio/printfln.o	\
 kernel/arch/i386/start.o	\
-kernel/main.o			\
+kernel/kmain.o			\
 
 all:
 	make build
