@@ -1,4 +1,4 @@
-CarbonOS System/Kernel  
+Carbon System/Kernel  
 Copyright 2015-2017 David Aylaian
  
                                 Apache License

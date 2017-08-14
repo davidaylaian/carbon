@@ -1,7 +1,7 @@
 /**
  * 
  * Copyright 2017 David Aylaian
- * https://github.com/DavidAylaian/CarbonOS/
+ * https://github.com/DavidAylaian/Carbon/
  * 
  * Based off of code by Brandon F. that can be found at
  * http://www.osdever.net/bkerndev/Docs/irqs.htm

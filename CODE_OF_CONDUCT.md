@@ -1,4 +1,4 @@
-# CarbonOS Code of Conduct
+# Carbon Code of Conduct
 
 ## Expected Behavior
 When working in the project space or publicly representing the project, contributors shall:

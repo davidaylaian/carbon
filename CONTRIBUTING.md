@@ -1,8 +1,8 @@
 # Contributing
-CarbonOS is a work-in-progress. We welcome everyone to help us develop. Please follow these general guidelines while contributing to CarbonOS.
+Carbon is a work-in-progress. We welcome everyone to help us develop. Please follow these general guidelines while contributing to Carbon.
 
 ## Pull Requests
-1. Read the [C styling rules](https://github.com/DavidAylaian/CarbonOS/wiki/C-Styling-Rules).
+1. Read the [C styling rules](https://github.com/DavidAylaian/Carbon/wiki/C-Styling-Rules).
 2. Fork the project.
 3. Make your changes and test them.
 4. Send us a pull request.

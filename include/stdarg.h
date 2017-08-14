@@ -1,7 +1,7 @@
 /**
  * 
  * Copyright 2017 David Aylaian
- * https://github.com/DavidAylaian/CarbonOS/
+ * https://github.com/DavidAylaian/Carbon/
  * 
  * Based on code found at
  * http://www.brokenthorn.com/Resources/OSDev14.html
