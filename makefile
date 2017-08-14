@@ -16,7 +16,7 @@ export QEMU=qemu-system-i386
 
 # flags
 export ASFLAGS=-felf32
-export CFLAGS=-nostdlib -std=gnu99 -ffreestanding -O2 -Wall -Wextra -nostdinc -fno-builtin -I ~/CarbonOS/include -masm=intel -c
+export CFLAGS=-nostdlib -std=gnu99 -ffreestanding -O2 -Wall -Wextra -nostdinc -fno-builtin -I ~/Carbon/include -masm=intel -c
 export LDFLAGS=-ffreestanding -O3 -nostdlib -lgcc
 
 # object files
@@ -59,15 +59,15 @@ build:
 	# kernel.bin
 	$(CC) $(LDFLAGS) -T kernel/link.ld -o iso/boot/kernel.bin $(OBJS)
 	
-	# CarbonOS.iso
-	grub-mkrescue -o CarbonOS.iso iso
+	# Carbon.iso
+	grub-mkrescue -o Carbon.iso iso
 
 vm:
-	$(QEMU) -cdrom CarbonOS.iso
+	$(QEMU) -cdrom Carbon.iso
 
 clean:
 	rm -rf iso
-	rm -f CarbonOS.iso
+	rm -f Carbon.iso
 	$(MAKE) -C arch clean
 	$(MAKE) -C drivers clean
 	$(MAKE) -C library clean
