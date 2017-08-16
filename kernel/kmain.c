@@ -1,8 +1,8 @@
 /**
- * 
+ *
  * Copyright 2017 David Aylaian
  * https://github.com/DavidAylaian/Carbon/
- * 
+ *
  */
 
 #include <hal.h>
@@ -14,7 +14,7 @@ void kmain()
 	terminal_install(1, WHITE, BLACK);
 	hal_install();
 	printf("\f");
-	
+
 	// interrupts
 	outb(0x21, 0xfd);
 	outb(0xa1, 0xff);

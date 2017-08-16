@@ -1,8 +1,8 @@
 /**
- * 
+ *
  * Copyright 2017 David Aylaian
  * https://github.com/DavidAylaian/Carbon/
- * 
+ *
  */
 
 #include <hal.h>
@@ -46,13 +46,13 @@ void gdt_set_descriptor (uint32_t i, uint64_t base, uint64_t limit, uint8_t acce
 	gdt[i].baseLo	= base & 0xFFFF;
 	gdt[i].baseMid	= (base >> 16) & 0xFF;
 	gdt[i].baseHi	= (base >> 24) & 0xFF;
-	
+
 	// set limit
 	gdt[i].limit = limit & 0xFFFF;
-	
+
 	// set flags
 	gdt[i].flags = access;
-	
+
 	// set granularity
 	gdt[i].grand = (limit >> 16) & 0x0F;
 	gdt[i].grand |= grand & 0xF0;
@@ -63,22 +63,22 @@ void gdt_install()
 	// set up gdtr
 	gdtr.limit = (sizeof (struct gdt_descriptor) * MAX_DESCRIPTORS) -1;
 	gdtr.base  = (uint32_t)& gdt[0];
-	
+
 	// null descriptor
 	gdt_set_descriptor(0, 0, 0, 0, 0);
-	
+
 	// code descriptor
 	gdt_set_descriptor(1, 0, 0xFFFFFFFF,
 		0b10011010,
 		0b11001111
 	);
-	
+
 	// data descriptor
 	gdt_set_descriptor(2, 0, 0xFFFFFFFF,
 		0b10010010,
 		0b11001111
 	);
-	
+
 	// load gdt by setting gdtr register to point to gdt and reloading registers
 	gdt_load();
 }

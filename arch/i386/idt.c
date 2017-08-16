@@ -1,8 +1,8 @@
 /**
- * 
+ *
  * Copyright 2017 David Aylaian
  * https://github.com/DavidAylaian/Carbon/
- * 
+ *
  */
 
 #include <hal.h>
@@ -51,10 +51,10 @@ void install_ir(uint32_t i, uint64_t base, uint16_t flags, uint16_t sel)
 	// set base address
 	idt[i].baseLo	= base & 0xFFFF;
 	idt[i].baseHi	= (base >> 16) & 0xFFFF;
-	
+
 	// thanks Intel
 	idt[i].reserved	= 0;
-	
+
 	// set flags and selector
 	idt[i].flags	= flags;
 	idt[i].selector	= sel;
@@ -65,11 +65,11 @@ void idt_install()
 	// set up idtr
 	idtr.limit = sizeof(struct idt_descriptor) * MAX_INTERRUPTS-1;
 	idtr.base  = (uint32_t) & idt[0];
-	
+
 	// register default handlers
 	for (size_t i=0; i<MAX_INTERRUPTS; i++)
 		install_ir (i, (size_t)default_handler, 0x8E, 0x08);
-	
+
 	// load idt by setting idtr register to point to idt
 	asm("lidt [idtr]");
 }

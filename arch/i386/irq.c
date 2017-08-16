@@ -1,11 +1,11 @@
 /**
- * 
+ *
  * Copyright 2017 David Aylaian
  * https://github.com/DavidAylaian/Carbon/
- * 
+ *
  * Based off of code by Brandon F. that can be found at
  * http://www.osdever.net/bkerndev/Docs/irqs.htm
- * 
+ *
  */
 
 #include <hal.h>
@@ -70,7 +70,7 @@ void irq_handler(struct regs *val)
 	handler = irq_handlers[val->intn - 32];
 	if(handler) handler();
 	else printfln("Received irq %d", val->intn - 32);
-	
+
 	// send EOI
 	if(val->intn > 39) outb(0xA0, 0x20);
 	outb(0x20, 0x20);

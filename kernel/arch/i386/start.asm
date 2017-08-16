@@ -17,12 +17,12 @@ mboot:
 	MULTIBOOT_FLAGS		equ MULTIBOOT_ALIGN | MULTIBOOT_MEMINFO | MULTIBOOT_KLUDGE
 	MULTIBOOT_CHECKSUM	equ -(MULTIBOOT_MAGIC + MULTIBOOT_FLAGS)
 	EXTERN text, bss, end
-	
+
 	; grub multiboot header
 	dd MULTIBOOT_MAGIC
 	dd MULTIBOOT_FLAGS
 	dd MULTIBOOT_CHECKSUM
-	
+
 	; sections for link.ld
 	dd mboot
 	dd text
@@ -35,11 +35,11 @@ global start
 start:
 	; set up stack
 	mov esp, stack
-	
+
 	; execute kmain()
 	extern kmain
 	call kmain
-	
+
 	; hang if kmain() returns
 	jmp hang
 

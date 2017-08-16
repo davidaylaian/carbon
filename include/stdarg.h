@@ -1,12 +1,12 @@
 /**
- * 
+ *
  * Copyright 2017 David Aylaian
  * https://github.com/DavidAylaian/Carbon/
- * 
+ *
  * Based on code found at
  * http://www.brokenthorn.com/Resources/OSDev14.html
  * Copyright 2008, BrokenThorn Entertainment, Co.
- * 
+ *
  */
 
 #ifndef STDARG_H

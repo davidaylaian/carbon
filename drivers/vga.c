@@ -1,8 +1,8 @@
 /**
- * 
+ *
  * Copyright 2017 David Aylaian
  * https://github.com/DavidAylaian/Carbon/
- * 
+ *
  */
 
 #include <drivers/vga.h>
@@ -30,7 +30,7 @@ static void enableCursor(uint8_t top, uint8_t bottom)
 {
 	outb(0x3D4, 0x0A);
 	outb(0x3D5, (inb(0x3D5) & 0xC0) | top);
-	
+
 	outb(0x3D4, 0x0B);
 	outb(0x3D5, (inb(0x3E0) & 0xE0) | bottom);
 }
@@ -40,7 +40,7 @@ void updateCursor(size_t xpos, size_t ypos)
 {
 	// calculate where cursor should be
 	uint16_t position = ypos * getTerminalWidth() + xpos;
-	
+
 	// send bytes
 	outb(0x3D4, 0x0F);
 	outb(0x3D5, (uint8_t) (position & 0xFF));
@@ -74,6 +74,6 @@ void terminal_install(uint8_t cursorSize, enum TERMINAL_COLOR fgcolor, enum TERM
 		setMaximumScanLine(fontheight-1);
 		enableCursor(fontheight - cursorSize - 3, fontheight - 3);
 	}
-		
+
 	setColor(fgcolor, bgcolor);
 }
