@@ -13,13 +13,13 @@ size_t ypos = 0;
 // clears the screen
 static inline void cls()   // the void is infinite
 {
-	for (size_t i = 0; i < getTerminalWidth() * getTerminalHeight(); i++) {
-		setChar(0x0, i, 0);
+	for (size_t i = 0; i < vga_get_width() * vga_get_height(); i++) {
+		vga_set_char(0x0, i, 0);
 	}
 
 	xpos = 0;
 	ypos = 0;
-	updateCursor(0,0);
+	vga_set_cursor_pos(0, 0);
 }
 
 // scrolls up
@@ -27,11 +27,11 @@ static inline void scroll()
 {
 	xpos = 0;
 
-	if (ypos+1 == getTerminalHeight())
+	if (ypos+1 == vga_get_height())
 	{
-		for (size_t i=0; i < getTerminalWidth() * getTerminalHeight(); i++) {
-			setChar(
-				getChar(i + getTerminalWidth(), 0),
+		for (size_t i=0; i < vga_get_width() * vga_get_height(); i++) {
+			vga_set_char(
+				vga_get_char(i + vga_get_width(), 0),
 				i, 0
 			);
 		}
@@ -58,14 +58,14 @@ static void printch(char c)
 			{
 				if(ypos != 0)
 				{
-					xpos = getTerminalWidth() - 1;
+					xpos = vga_get_width() - 1;
 					ypos--;
-					setChar(' ', xpos, ypos);
+					vga_set_char(' ', xpos, ypos);
 				}
 			}
 			else {
 				xpos--;
-				setChar(' ', xpos, ypos);
+				vga_set_char(' ', xpos, ypos);
 			}
 
 			break;
@@ -103,14 +103,14 @@ static void printch(char c)
 
 		// normal character
 		default: {
-			setChar(c, xpos, ypos);
+			vga_set_char(c, xpos, ypos);
 			xpos++;
 			break;
 		}
 	}
 
 	// if we are out of room, make more room
-	if (xpos == getTerminalWidth()) scroll();
+	if (xpos == vga_get_width()) scroll();
 }
 
 // prints a string to stdout
@@ -122,7 +122,7 @@ void print(char* str)
 		printch(str[i]);
 	}
 
-	updateCursor(xpos, ypos);
+	vga_set_cursor_pos(xpos, ypos);
 }
 
 // prints a va_list argument list in the given format
@@ -198,7 +198,7 @@ void vprintf(char* format, va_list args)
 		else printch(format[i]);
 	}
 
-	updateCursor(xpos, ypos);
+	vga_set_cursor_pos(xpos, ypos);
 }
 
 // prints an ellipsis argument list in the given format
