@@ -13,13 +13,13 @@
 #include <stdint.h>
 
 // string examination
-extern int8_t strcmp(const char *str1, const char *str2);
-extern size_t strlen(const char* str);
+extern size_t strlen(const char *str);
+extern int strcmp(const char *str1, const char *str2);
 
 // string manipulation
-extern char* strrev(char* str);
+extern char *strrev(char *str);
 
 // string conversion
-char* itoa(int32_t n, char* buffer, size_t base);
+extern char *itoa(int n, char *buffer, int base);
 
 #endif
