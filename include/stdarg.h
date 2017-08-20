@@ -23,7 +23,7 @@ typedef uint8_t* va_list;
 	& ~(STACKITEM - 1))
 
 #define	va_start(AP, LASTARG)		\
-	(AP=((va_list)&(LASTARG)	\
+	(AP = ((va_list) & (LASTARG)	\
 	+ VA_SIZE(LASTARG)))
 
 #define va_end(AP)
