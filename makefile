@@ -36,8 +36,10 @@ library/string/strcmp.o		\
 library/string/strlen.o		\
 library/string/strrev.o		\
 library/string/itoa.o		\
+library/stdio/putchar.o		\
+library/stdio/puts.o		\
+library/stdio/vprintf.o		\
 library/stdio/printf.o		\
-library/stdio/printfln.o	\
 kernel/arch/i386/start.o	\
 kernel/kmain.o			\
 

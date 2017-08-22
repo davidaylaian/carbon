@@ -69,7 +69,7 @@ void irq_handler(struct regs *val)
 	void(*handler)();
 	handler = irq_handlers[val->intn - 32];
 	if(handler) handler();
-	else printfln("Received irq %d", val->intn - 32);
+	else printf("Received irq %d\n", val->intn - 32);
 
 	// send EOI
 	if(val->intn > 39) outb(0xA0, 0x20);

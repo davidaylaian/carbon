@@ -81,5 +81,5 @@ void isr_install()
 
 // handles an isr
 void isr_handler(struct regs *val) {
-	printfln("Received isr %d, error code %x", val->intn, val->error_code);
+	printf("Received isr %d, error code %x\n", val->intn, val->error_code);
 }

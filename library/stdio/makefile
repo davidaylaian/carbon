@@ -1,10 +1,14 @@
 OBJS=		\
+putchar.o	\
+puts.o		\
+vprintf.o	\
 printf.o	\
-printfln.o	\
 
 build:
+	$(CC) $(CFLAGS) putchar.c	-o putchar.o
+	$(CC) $(CFLAGS) puts.c		-o puts.o
+	$(CC) $(CFLAGS) vprintf.c	-o vprintf.o
 	$(CC) $(CFLAGS) printf.c	-o printf.o
-	$(CC) $(CFLAGS) printfln.c	-o printfln.o
 
 clean:
 	rm -f $(OBJS)

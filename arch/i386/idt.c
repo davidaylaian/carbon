@@ -36,12 +36,12 @@ struct idtr idtr;
 // display (primitive) error message and halt execution
 noreturn void default_handler()
 {
-	print("\n\n");
-	print("              +==================================================+              ");
-	print("              |  ***  default_handler: Unhandled Exception  ***  |              ");
-	print("              |  ***           Execution halted.            ***  |              ");
-	print("              +==================================================+              ");
-	print("\n\n");
+	puts("\n");
+	puts("              +==================================================+              ");
+	puts("              |  ***  default_handler: Unhandled Exception  ***  |              ");
+	puts("              |  ***           Execution halted.            ***  |              ");
+	puts("              +==================================================+              ");
+	puts("\n");
 	hang();
 }
 
