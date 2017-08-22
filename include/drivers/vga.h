@@ -32,14 +32,14 @@ enum VGA_COLORS {
 	COLOR_WHITE = 15
 };
 
-extern size_t vga_get_width();
-extern size_t vga_get_height();
+extern uint16_t vga_get_width();
+extern uint16_t vga_get_height();
 extern void vga_set_max_scanline(uint8_t scanline);
 extern void vga_enable_cursor(uint8_t cursor_top, uint8_t cursor_bottom);
 extern void vga_disable_cursor();
-extern void vga_set_cursor_pos(size_t xpos, size_t ypos);
+extern void vga_set_cursor_pos(uint16_t xpos, uint16_t ypos);
 extern void vga_set_color(enum VGA_COLORS fgcolor, enum VGA_COLORS bgcolor);
-extern void vga_set_char(char c, size_t xpos, size_t ypos);
-extern char vga_get_char(size_t xpos, size_t ypos);
+extern void vga_set_char(char c, uint16_t xpos, uint16_t ypos);
+extern char vga_get_char(uint16_t xpos, uint16_t ypos);
 
 #endif

@@ -7,19 +7,19 @@
 
 #include <drivers/vga.h>
 
-static const volatile size_t VGA_WIDTH = 80;
-static const volatile size_t VGA_HEIGHT = 25;
+static const volatile uint16_t VGA_WIDTH = 80;
+static const volatile uint16_t VGA_HEIGHT = 25;
 static volatile uint16_t *vidmem = (uint16_t*) 0xB8000;
 static uint8_t vga_color;
 
 // get the terminal width
-size_t vga_get_width()
+uint16_t vga_get_width()
 {
 	return VGA_WIDTH;
 }
 
 // get the terminal height
-size_t vga_get_height()
+uint16_t vga_get_height()
 {
 	return VGA_HEIGHT;
 }
@@ -49,7 +49,7 @@ void vga_disable_cursor()
 }
 
 // sets the cursor's position to xpos, ypos
-void vga_set_cursor_pos(size_t xpos, size_t ypos)
+void vga_set_cursor_pos(uint16_t xpos, uint16_t ypos)
 {
 	uint16_t pos = ypos * VGA_WIDTH + xpos;
 
@@ -66,13 +66,13 @@ void vga_set_color(enum VGA_COLORS fgcolor, enum VGA_COLORS bgcolor)
 }
 
 // sets xpos, ypos to c
-void vga_set_char(char c, size_t xpos, size_t ypos)
+void vga_set_char(char c, uint16_t xpos, uint16_t ypos)
 {
 	vidmem[ypos * VGA_WIDTH + xpos] = c | vga_color << 8;
 }
 
 // gets the char at xpos, ypos
-char vga_get_char(size_t xpos, size_t ypos)
+char vga_get_char(uint16_t xpos, uint16_t ypos)
 {
 	return vidmem[ypos * VGA_WIDTH + xpos];
 }
