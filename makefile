@@ -33,6 +33,7 @@ arch/i386/hal.o			\
 drivers/keyboard.o		\
 drivers/vga.o			\
 library/string/strcmp.o		\
+library/string/strcpy.o		\
 library/string/strlen.o		\
 library/string/strrev.o		\
 library/string/itoa.o		\
