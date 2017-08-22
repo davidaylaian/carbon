@@ -32,6 +32,7 @@ arch/i386/irq.o			\
 arch/i386/hal.o			\
 drivers/keyboard.o		\
 drivers/vga.o			\
+library/string/strcat.o		\
 library/string/strcmp.o		\
 library/string/strcpy.o		\
 library/string/strlen.o		\

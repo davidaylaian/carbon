@@ -17,6 +17,7 @@ extern size_t strlen(const char *str);
 extern int strcmp(const char *str1, const char *str2);
 
 // string manipulation
+extern char *strcat(char *dest, const char *src);
 extern char *strcpy(char *dest, const char *src);
 extern char *strrev(char *str);
 
