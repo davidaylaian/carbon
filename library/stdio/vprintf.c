@@ -1,3 +1,10 @@
+/**
+ *
+ * Copyright 2017 David Aylaian
+ * https://github.com/DavidAylaian/Carbon/
+ *
+ */
+
 #include <stdio.h>
 
 // prints a string to stdout

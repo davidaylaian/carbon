@@ -1,3 +1,10 @@
+/**
+ *
+ * Copyright 2017 David Aylaian
+ * https://github.com/DavidAylaian/Carbon/
+ *
+ */
+
 #include <stdio.h>
 
 // prints an ellipsis argument list to stdout in the given format

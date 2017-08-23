@@ -1,3 +1,10 @@
+/**
+ *
+ * Copyright 2017 David Aylaian
+ * https://github.com/DavidAylaian/Carbon/
+ *
+ */
+
 #include <stdio.h>
 
 static uint16_t xpos = 0;
