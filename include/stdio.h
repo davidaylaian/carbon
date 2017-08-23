@@ -20,7 +20,7 @@
 // print to stdout
 extern void putchar(char c);
 extern void puts(const char *str);
-extern void vprintf(const char *format, va_list args);
-extern void printf(const char *format, ...);
+extern int vprintf(const char *format, va_list args);
+extern int printf(const char *format, ...);
 
 #endif

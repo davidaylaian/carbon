@@ -10,9 +10,11 @@ static void print(const char *str)
 }
 
 // prints a variable argument list to stdout in the given format
-void vprintf(const char *format, va_list args)
+int vprintf(const char *format, va_list args)
 {
-	for (size_t i = 0; i < strlen(format); i++)
+	size_t i = 0;
+
+	for (; i < strlen(format); i++)
 	{
 		if (format[i] != '%')
 		{
@@ -43,7 +45,7 @@ void vprintf(const char *format, va_list args)
 				case 'i':
 				case 'd':
 				{
-					char buf[8] = {0};
+					char buf[11] = {0};
 					print(itoa(va_arg(args, int), buf, 10));
 					break;
 				}
@@ -51,7 +53,7 @@ void vprintf(const char *format, va_list args)
 				case 'X':
 				case 'x':
 				{
-					char buf[8] = {0};
+					char buf[9] = {0};
 					print("0x");
 					print(itoa(va_arg(args, int), buf, 16));
 					break;
@@ -59,7 +61,7 @@ void vprintf(const char *format, va_list args)
 
 				case 'b':
 				{
-					char buf[8] = {0};
+					char buf[33] = {0};
 					print("0b");
 					print(itoa(va_arg(args, int), buf, 2));
 					break;
@@ -67,7 +69,7 @@ void vprintf(const char *format, va_list args)
 
 				case 'o':
 				{
-					char buf[8] = {0};
+					char buf[12] = {0};
 					putchar('0');
 					print(itoa(va_arg(args, int), buf, 8));
 					break;
@@ -75,9 +77,12 @@ void vprintf(const char *format, va_list args)
 
 				default:
 				{
+					return -1;
 					break;
 				}
 			}
 		}
 	}
+
+	return i;
 }
