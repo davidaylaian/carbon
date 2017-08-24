@@ -15,7 +15,7 @@ static void cls()   // the void is infinite
 {
 	for (uint32_t i = 0; i < vga_get_width() * vga_get_height(); i++)
 	{
-		vga_set_char(0x0, i, 0);
+		vga_set_char(' ', i, 0);
 	}
 
 	xpos = 0;
@@ -59,13 +59,13 @@ void putchar(char c)
 				{
 					xpos = vga_get_width() - 1;
 					ypos--;
-					vga_set_char(0x0, xpos, ypos);
+					vga_set_char(' ', xpos, ypos);
 				}
 			}
 			else
 			{
 				xpos--;
-				vga_set_char(0x0, xpos, ypos);
+				vga_set_char(' ', xpos, ypos);
 			}
 
 			break;
