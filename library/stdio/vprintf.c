@@ -19,13 +19,14 @@ static void print(const char *str)
 // prints a variable argument list to stdout in the given format
 int vprintf(const char *format, va_list args)
 {
-	size_t i = 0;
+	int ret = 0;
 
-	for (; i < strlen(format); i++)
+	for (size_t i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
 		{
 			putchar(format[i]);
+			ret++;
 		}
 		else
 		{
@@ -34,18 +35,22 @@ int vprintf(const char *format, va_list args)
 				case '%':
 				{
 					putchar('%');
+					ret++;
 					break;
 				}
 
 				case 'c':
 				{
 					putchar(va_arg(args, char));
+					ret++;
 					break;
 				}
 
 				case 's':
 				{
-					print(va_arg(args, char*));
+					char* tmp = va_arg(args, char*);
+					print(tmp);
+					ret += strlen(tmp);
 					break;
 				}
 
@@ -54,6 +59,7 @@ int vprintf(const char *format, va_list args)
 				{
 					char buf[11] = {0};
 					print(itoa(va_arg(args, int), buf, 10));
+					ret += strlen(buf);
 					break;
 				}
 
@@ -62,7 +68,9 @@ int vprintf(const char *format, va_list args)
 				{
 					char buf[9] = {0};
 					print("0x");
+					ret += 2;
 					print(itoa(va_arg(args, int), buf, 16));
+					ret += strlen(buf);
 					break;
 				}
 
@@ -70,7 +78,9 @@ int vprintf(const char *format, va_list args)
 				{
 					char buf[33] = {0};
 					print("0b");
+					ret += 2;
 					print(itoa(va_arg(args, int), buf, 2));
+					ret += strlen(buf);
 					break;
 				}
 
@@ -78,7 +88,9 @@ int vprintf(const char *format, va_list args)
 				{
 					char buf[12] = {0};
 					putchar('0');
+					ret += 1;
 					print(itoa(va_arg(args, int), buf, 8));
+					ret += strlen(buf);
 					break;
 				}
 
@@ -91,5 +103,5 @@ int vprintf(const char *format, va_list args)
 		}
 	}
 
-	return i;
+	return ret;
 }
