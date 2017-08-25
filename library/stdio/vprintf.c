@@ -63,6 +63,14 @@ int vprintf(const char *format, va_list args)
 					break;
 				}
 
+				case 'u':
+				{
+					char buf[10] = {0};
+					print(itoa(va_arg(args, unsigned int), buf, 10));
+					ret += strlen(buf);
+					break;
+				}
+
 				case 'X':
 				case 'x':
 				{
