@@ -94,6 +94,13 @@ int vprintf(const char *format, va_list args)
 					break;
 				}
 
+				case 'n':
+				{
+					int *tmp = (int*) va_arg(args, int);
+					*tmp = ret;
+					break;
+				}
+
 				default:
 				{
 					return -1;
