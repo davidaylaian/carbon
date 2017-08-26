@@ -45,7 +45,7 @@ void vga_enable_cursor(uint8_t cursor_start, uint8_t cursor_end)
 void vga_disable_cursor()
 {
 	outb(0x3D4, 0x0A);
-	outb(0x3D5, 0b00100000);
+	outb(0x3D5, 0x20);
 }
 
 // sets the cursor's position to xpos, ypos
