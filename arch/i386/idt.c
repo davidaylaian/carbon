@@ -9,9 +9,6 @@
 
 #define MAX_INTERRUPTS 256
 
-// found in start.asm
-extern noreturn void hang();
-
 // describes an interrupt descriptor
 struct idt_descriptor {
 	uint16_t  baseLo;
@@ -42,7 +39,9 @@ noreturn void default_handler()
 	puts("              |  ***           Execution halted.            ***  |              ");
 	puts("              +==================================================+              ");
 	puts("\n");
-	hang();
+
+	disable();
+	while (1);
 }
 
 // installs an interrupt routine (ir)
