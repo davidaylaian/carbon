@@ -1,19 +1,21 @@
 /**
- * 
+ *
  * Copyright 2017 David Aylaian
  * https://github.com/DavidAylaian/Carbon/
- * 
+ *
  */
 
 #include <hal.h>
 
 // enable interrupts
-void enable() {
+void enable()
+{
 	asm("sti");
 }
 
 // disable interrupts
-void disable() {
+void disable()
+{
 	asm("cli");
 }
 

@@ -1,11 +1,11 @@
-;
+;*****************************************************
 ; Copyright 2017 David Aylaian
 ; https://github.com/DavidAylaian/Carbon/
 ;
 ; Based off of code by Brandon F. that can be found at
 ; http://www.osdever.net/bkerndev/Docs/isrs.htm
 ; http://www.osdever.net/bkerndev/Docs/irqs.htm
-;
+;*****************************************************
 
 extern isr_handler
 isr_wrapper:
@@ -15,28 +15,28 @@ isr_wrapper:
 	push es
 	push fs
 	push gs
-	
+
 	; flush segment registers and reload them for kernel mode
 	mov ax, 0x10
 	mov ds, ax
 	mov es, ax
 	mov fs, ax
 	mov gs, ax
-	
+
 	; call the handler (found in isr.c)
 	mov eax, esp
 	push eax
 	mov eax, isr_handler
 	call eax
 	pop eax
-	
+
 	; pop registers
 	pop gs
 	pop fs
 	pop es
 	pop ds
 	popa
-	
+
 	; return
 	add esp, 8
 	iret
@@ -236,28 +236,28 @@ irq_wrapper:
 	push es
 	push fs
 	push gs
-	
+
 	; flush segment registers and reload them for kernel mode
 	mov ax, 0x10
 	mov ds, ax
 	mov es, ax
 	mov fs, ax
 	mov gs, ax
-	
+
 	; call the handler (found in irq.c)
 	mov eax, esp
 	push eax
 	mov eax, irq_handler
 	call eax
 	pop eax
-	
+
 	; pop registers
 	pop gs
 	pop fs
 	pop es
 	pop ds
 	popa
-	
+
 	; return
 	add esp, 8
 	iret

@@ -1,79 +1,78 @@
 /**
- * 
+ *
  * Copyright 2017 David Aylaian
  * https://github.com/DavidAylaian/Carbon/
- * 
+ *
  */
 
 #include <drivers/vga.h>
 
-// variables
-volatile uint16_t* vidmem = (uint16_t*) 0xB8000;
-const uint8_t fontheight = 16;
-uint8_t terminal_color;
+static const volatile uint16_t VGA_WIDTH = 80;
+static const volatile uint16_t VGA_HEIGHT = 25;
+static volatile uint16_t *vidmem = (uint16_t*) 0xB8000;
+static uint8_t vga_color;
 
-/* Please refer to the FreeVGA project for	*/
-/* details on the following three functions.	*/
-
-static void setMaximumScanLine(uint8_t fontheight)
+// get the terminal width
+uint16_t vga_get_width()
 {
-	outb(CRCT_ADDRESS, 0x09);
-	outb(CRCT_DATA, fontheight);
+	return VGA_WIDTH;
 }
 
-static void disableCursor() {
-	outb(0x3D4, 0x0A);
-	outb(0x3D5, 0b00100000);
+// get the terminal height
+uint16_t vga_get_height()
+{
+	return VGA_HEIGHT;
 }
 
-static void enableCursor(uint8_t top, uint8_t bottom)
+// set the maximum scanline
+void vga_set_max_scanline(uint8_t scanline)
+{
+	outb(0x3D4, 0x09);
+	outb(0x3D5, scanline);
+}
+
+// enable the cursor
+void vga_enable_cursor(uint8_t cursor_start, uint8_t cursor_end)
 {
 	outb(0x3D4, 0x0A);
-	outb(0x3D5, (inb(0x3D5) & 0xC0) | top);
-	
+	outb(0x3D5, (inb(0x3D5) & 0xC0) | cursor_start);
+
 	outb(0x3D4, 0x0B);
-	outb(0x3D5, (inb(0x3E0) & 0xE0) | bottom);
+	outb(0x3D5, (inb(0x3E0) & 0xE0) | cursor_end);
 }
 
-// sets cursor location to xpos, ypos
-void updateCursor(size_t xpos, size_t ypos)
+// disable the cursor
+void vga_disable_cursor()
 {
-	// calculate where cursor should be
-	uint16_t position = ypos * getTerminalWidth() + xpos;
-	
-	// send bytes
+	outb(0x3D4, 0x0A);
+	outb(0x3D5, 0x20);
+}
+
+// sets the cursor's position to xpos, ypos
+void vga_set_cursor_pos(uint16_t xpos, uint16_t ypos)
+{
+	uint16_t pos = ypos * VGA_WIDTH + xpos;
+
 	outb(0x3D4, 0x0F);
-	outb(0x3D5, (uint8_t) (position & 0xFF));
+	outb(0x3D5, (uint8_t) (pos & 0xFF));
 	outb(0x3D4, 0x0E);
-	outb(0x3D5, (uint8_t) ((position >> 8) & 0xFF));
+	outb(0x3D5, (uint8_t) ((pos >> 8) & 0xFF));
 }
 
-// changes the color of outputted text
-void setColor(enum TERMINAL_COLOR fgcolor, enum TERMINAL_COLOR bgcolor)
+// changes the color
+void vga_set_color(enum VGA_COLORS fgcolor, enum VGA_COLORS bgcolor)
 {
-	terminal_color = (fgcolor | bgcolor << 4);
+	vga_color = fgcolor | bgcolor << 4;
 }
 
-// displays c to xpos, ypos
-void setChar(char c, size_t xpos, size_t ypos)
+// sets xpos, ypos to c
+void vga_set_char(char c, uint16_t xpos, uint16_t ypos)
 {
-	vidmem [ypos * getTerminalWidth() + xpos] = (c | terminal_color << 8);
+	vidmem[ypos * VGA_WIDTH + xpos] = c | vga_color << 8;
 }
 
 // gets the char at xpos, ypos
-char getChar(size_t xpos, size_t ypos)
+char vga_get_char(uint16_t xpos, uint16_t ypos)
 {
-	return vidmem [ypos * getTerminalWidth() + xpos];
-}
-
-// installs driver
-void terminal_install(uint8_t cursorSize, enum TERMINAL_COLOR fgcolor, enum TERMINAL_COLOR bgcolor)
-{
-	if (cursorSize == 0) disableCursor();
-	else {
-		setMaximumScanLine(fontheight-1);
-		enableCursor(fontheight - cursorSize - 3, fontheight - 3);
-	}
-		
-	setColor(fgcolor, bgcolor);
+	return vidmem[ypos * VGA_WIDTH + xpos];
 }

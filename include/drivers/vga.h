@@ -1,8 +1,8 @@
 /**
- * 
+ *
  * Copyright 2017 David Aylaian
  * https://github.com/DavidAylaian/Carbon/
- * 
+ *
  */
 
 #ifndef DRIVERS_TERMINAL_H
@@ -12,49 +12,34 @@
 #include <stddef.h>
 #include <stdint.h>
 
-// terminal size
-static const volatile size_t TERMINAL_WIDTH	= 80;
-static const volatile size_t TERMINAL_HEIGHT	= 25;
-
-// returns width of terminal
-static inline size_t getTerminalWidth() {
-	return TERMINAL_WIDTH;
-}
-
-// returns height of terminal
-static inline size_t getTerminalHeight() {
-	return TERMINAL_HEIGHT;
-}
-
 // color constants
-enum TERMINAL_COLOR {
-	BLACK = 0,
-	BLUE = 1,
-	GREEN = 2,
-	CYAN = 3,
-	RED = 4,
-	MAGENTA = 5,
-	BROWN = 6,
-	LIGHT_GRAY = 7,
-	DARK_GRAY = 8,
-	LIGHT_BLUE = 9,
-	LIGHT_GREEN = 10,
-	LIGHT_CYAN = 11,
-	LIGHT_RED = 12,
-	LIGHT_MAGENTA = 13,
-	LIGHT_BROWN = 14,
-	WHITE = 15
+enum VGA_COLORS {
+	COLOR_BLACK = 0,
+	COLOR_BLUE = 1,
+	COLOR_GREEN = 2,
+	COLOR_CYAN = 3,
+	COLOR_RED = 4,
+	COLOR_MAGENTA = 5,
+	COLOR_BROWN = 6,
+	COLOR_LIGHT_GRAY = 7,
+	COLOR_DARK_GRAY = 8,
+	COLOR_LIGHT_BLUE = 9,
+	COLOR_LIGHT_GREEN = 10,
+	COLOR_LIGHT_CYAN = 11,
+	COLOR_LIGHT_RED = 12,
+	COLOR_LIGHT_MAGENTA = 13,
+	COLOR_LIGHT_BROWN = 14,
+	COLOR_WHITE = 15
 };
 
-// ports
-#define CRCT_ADDRESS	0x3D4
-#define CRCT_DATA	0x3D5
-
-// function prototypes
-extern void updateCursor(size_t xpos, size_t ypos);
-extern void setColor(enum TERMINAL_COLOR fgcolor, enum TERMINAL_COLOR bgcolor);
-extern void setChar(char c, size_t xpos, size_t ypos);
-extern char getChar(size_t xpos, size_t ypos);
-extern void terminal_install(uint8_t cursorSize, enum TERMINAL_COLOR fgcolor, enum TERMINAL_COLOR bgcolor);
+extern uint16_t vga_get_width();
+extern uint16_t vga_get_height();
+extern void vga_set_max_scanline(uint8_t scanline);
+extern void vga_enable_cursor(uint8_t cursor_top, uint8_t cursor_bottom);
+extern void vga_disable_cursor();
+extern void vga_set_cursor_pos(uint16_t xpos, uint16_t ypos);
+extern void vga_set_color(enum VGA_COLORS fgcolor, enum VGA_COLORS bgcolor);
+extern void vga_set_char(char c, uint16_t xpos, uint16_t ypos);
+extern char vga_get_char(uint16_t xpos, uint16_t ypos);
 
 #endif

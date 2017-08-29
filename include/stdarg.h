@@ -1,12 +1,12 @@
 /**
- * 
+ *
  * Copyright 2017 David Aylaian
  * https://github.com/DavidAylaian/Carbon/
- * 
+ *
  * Based on code found at
  * http://www.brokenthorn.com/Resources/OSDev14.html
  * Copyright 2008, BrokenThorn Entertainment, Co.
- * 
+ *
  */
 
 #ifndef STDARG_H
@@ -23,7 +23,7 @@ typedef uint8_t* va_list;
 	& ~(STACKITEM - 1))
 
 #define	va_start(AP, LASTARG)		\
-	(AP=((va_list)&(LASTARG)	\
+	(AP = ((va_list) & (LASTARG)	\
 	+ VA_SIZE(LASTARG)))
 
 #define va_end(AP)

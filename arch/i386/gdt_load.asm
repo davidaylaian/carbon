@@ -1,18 +1,20 @@
-;********************************************
+;****************************************
 ; Copyright 2017 David Aylaian
 ; https://github.com/DavidAylaian/Carbon/
-;********************************************
+;****************************************
 
 extern gdtr
 global gdt_load
+
+; load the gdt
 gdt_load:
-	lgdt [gdtr]		; load the GDT
-	mov ax, 0x10		; flush segment registers and reload them for kernel mode
+	lgdt [gdtr]
+	mov ax, 0x10
 	mov ds, ax
 	mov es, ax
 	mov fs, ax
 	mov gs, ax
 	mov ss, ax
-	jmp 0x08:flushCS	; perform far jump to set cs to 0x08
-flushCS:
+	jmp 0x08:flush
+flush:
 	ret

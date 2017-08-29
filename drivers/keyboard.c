@@ -1,8 +1,8 @@
 /**
- * 
+ *
  * Copyright 2017 David Aylaian
  * https://github.com/DavidAylaian/Carbon/
- * 
+ *
  */
 
 #include <drivers/keyboard.h>
@@ -28,7 +28,7 @@ static char keymap_us[0x54] = {
 static void keyboard_handler()
 {
 	uint8_t scancode = inb(0x60);
-	
+
 	if(sequence) {
 		sequence = 0;
 	} else {

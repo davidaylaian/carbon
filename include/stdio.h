@@ -1,8 +1,8 @@
 /**
- * 
+ *
  * Copyright 2017 David Aylaian
  * https://github.com/DavidAylaian/Carbon/
- * 
+ *
  */
 
 #ifndef STDIO_H
@@ -18,13 +18,9 @@
 #define EOF -1
 
 // print to stdout
-extern void print(char* str);
-extern void vprintf(char* format, va_list args);
-extern void printf(char* format, ...);
-
-// print to stdout with a newline
-extern void println(char* str);
-extern void vprintfln(char* format, va_list args);
-extern void printfln(char* format, ...);
+extern void putchar(char c);
+extern void puts(const char *str);
+extern int vprintf(const char *format, va_list args);
+extern int printf(const char *format, ...);
 
 #endif

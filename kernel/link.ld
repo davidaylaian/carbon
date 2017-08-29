@@ -1,30 +1,32 @@
-OUTPUT_FORMAT("binary")
+OUTPUT_FORMAT(elf32-i386)
 ENTRY(start)
-phys = 1M;
 
 SECTIONS
 {
-	/* executable opcodes and operands */
-	.text phys : AT(phys) {
-		text = .;
+	. = 1M;
+	phys = .;
+
+	.text BLOCK(4K) : ALIGN(4K)
+	{
+		*(.multiboot)
 		*(.text)
-		*(.rodata*)
-		. = ALIGN(4K);
 	}
-	
-	/* read-write data (initialized)   */
-	.data : AT(phys + (data - text)) {
-		data = .;
+
+	.rodata BLOCK(4K) : ALIGN(4K)
+	{
+		*(.rodata)
+	}
+
+	.data BLOCK(4K) : ALIGN(4K)
+	{
 		*(.data)
-		. = ALIGN(4K);
 	}
-	
-	/* read-write data (uninitialized) */
-	.bss : AT(phys + (bss - text)) {
-		bss = .;
+
+	.bss BLOCK(4K) : ALIGN(4K)
+	{
+		*(COMMON)
 		*(.bss)
-		. = ALIGN(4K);
 	}
-	
+
 	end = .;
 }
