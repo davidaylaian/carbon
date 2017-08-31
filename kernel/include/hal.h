@@ -11,7 +11,6 @@
 #include <stdint.h>
 #include <string.h>
 #include <stdio.h>
-#include <stdnoreturn.h>
 
 // assembly interface
 extern void enable();

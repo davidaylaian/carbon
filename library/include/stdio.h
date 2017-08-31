@@ -8,8 +8,8 @@
 #ifndef STDIO_H
 #define STDIO_H
 
-#include <drivers/keyboard.h>
-#include <drivers/vga.h>
+#include <keyboard.h>
+#include <vga.h>
 #include <stdarg.h>
 #include <stddef.h>
 #include <stdint.h>

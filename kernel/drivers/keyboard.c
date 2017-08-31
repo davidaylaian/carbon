@@ -5,7 +5,7 @@
  *
  */
 
-#include <drivers/keyboard.h>
+#include <keyboard.h>
 
 bool sequence = 0;
 

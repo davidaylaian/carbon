@@ -28,7 +28,7 @@ static struct idt_descriptor idt[MAX_INTERRUPTS];
 struct idtr idtr;
 
 // display (primitive) error message and halt execution
-noreturn static void default_handler()
+__attribute__((noreturn)) static void default_handler()
 {
 	puts("\n");
 	puts("              +==================================================+              ");

@@ -5,7 +5,7 @@
  *
  */
 
-#include <drivers/vga.h>
+#include <vga.h>
 
 static const volatile uint16_t VGA_WIDTH = 80;
 static const volatile uint16_t VGA_HEIGHT = 25;

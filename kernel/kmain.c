@@ -5,7 +5,7 @@
  *
  */
 
-#include <drivers/vga.h>
+#include <vga.h>
 #include <hal.h>
 #include <stdio.h>
 
