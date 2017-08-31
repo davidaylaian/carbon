@@ -1,5 +1,5 @@
 build:
-	$(MAKE) -C i386 build
+	$(MAKE) -C x86 build
 
 clean:
-	$(MAKE) -C i386 clean
+	$(MAKE) -C x86 clean
