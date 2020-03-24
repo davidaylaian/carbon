@@ -1,0 +1,19 @@
+# Linux System Files
+.directory
+.fuse_hidden*
+.nfs*
+
+# Text Editor Files
+*~
+*.kate-swp
+.swo
+.swp
+
+# Dependency Files
+*.d
+
+# Binary Files
+*.iso
+*.img
+*.bin
+*.o
