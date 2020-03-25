@@ -11,10 +11,16 @@
 void gdt_install();
 void idt_install();
 void pic_remap();
+void idt_setvect();
 
 void hal_initialize()
 {
 	gdt_install();
 	idt_install();
 	pic_remap();
+}
+
+void setvect(size_t intn, size_t handler)
+{
+	idt_setvect(intn, handler);
 }

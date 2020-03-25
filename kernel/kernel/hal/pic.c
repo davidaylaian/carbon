@@ -9,7 +9,7 @@
 #include <hal.h>
 
 //map the 8259A PIC to use interrupts 32-47
-static void pic_remap()
+void pic_remap()
 {
 	outb(0x20, 0x11);
 	outb(0xA0, 0x11);

@@ -10,6 +10,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+// from gdt_load.asm
 void gdt_load();
 
 #define GDT_MAX_DESCRIPTORS 3
@@ -33,7 +34,6 @@ struct gdt_gdtr {
 static struct gdt_descriptor gdt[GDT_MAX_DESCRIPTORS];
 struct gdt_gdtr gdt_gdtr;
 
-// sets a gdt descriptor
 static void gdt_set_descriptor(size_t i, uint64_t base, uint64_t limit, uint8_t access, uint8_t granularity)
 {
 	gdt[i].base_lo	= base & 0xFFFF;
@@ -47,10 +47,8 @@ static void gdt_set_descriptor(size_t i, uint64_t base, uint64_t limit, uint8_t 
 	gdt[i].granularity |= granularity & 0xF0;
 }
 
-// install the gdt
 void gdt_install()
 {
-	// set up gdtr
 	gdt_gdtr.limit = (sizeof(struct gdt_descriptor) * GDT_MAX_DESCRIPTORS) - 1;
 	gdt_gdtr.base  = (uint32_t) &gdt[0];
 
@@ -71,6 +69,5 @@ void gdt_install()
 		0b11001111
 	);
 
-	// load gdt
 	gdt_load();
 }

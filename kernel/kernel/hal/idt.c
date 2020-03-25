@@ -9,8 +9,7 @@
 #include <attribute.h>
 #include <stddef.h>
 #include <stdint.h>
-#include <terminal.h>
-#include <hal.h>
+#include <stdio.h>
 
 #define IDT_MAX_INTERRUPTS 256
 
@@ -32,23 +31,21 @@ struct idt_idtr {
 static struct idt_descriptor idt[IDT_MAX_INTERRUPTS];
 struct idt_idtr idt_idtr;
 
-// TODO: replace with printfs
-
 // if this function is ever called, then something has gone terribly wrong
 static noreturn void default_handler()
 {
-	terminal_print("\n\n");
-	terminal_print("              +==================================================+              ");
-	terminal_print("              |  ***  default_handler: Unhandled Exception  ***  |              ");
-	terminal_print("              |  ***           Execution halted.            ***  |              ");
-	terminal_print("              +==================================================+              ");
-	terminal_print("\n\n");
+	puts("\n");
+	puts("              +==================================================+              ");
+	puts("              |  ***  default_handler: Unhandled Exception  ***  |              ");
+	puts("              |  ***           Execution halted.            ***  |              ");
+	puts("              +==================================================+              ");
+	puts("\n");
 
 	disable();
 	while (1);
 }
 
-// sets an interrupt vector, with internal options flags and sel
+// sets an entry in the idt
 static inline void idt_setvect_internal(size_t i, size_t base, uint8_t flags, uint16_t sel)
 {
 	if (i <= IDT_MAX_INTERRUPTS)
@@ -62,16 +59,13 @@ static inline void idt_setvect_internal(size_t i, size_t base, uint8_t flags, ui
 	}
 }
 
-// sets an interrupt vector
 void idt_setvect(size_t intn, size_t handler)
 {
 	idt_setvect_internal(intn, handler, 0x8E, 0x08);
 }
 
-// install the idt
 void idt_install()
 {
-	// set up idtr
 	idt_idtr.limit = sizeof(struct idt_descriptor) * IDT_MAX_INTERRUPTS - 1;
 	idt_idtr.base  = (uint32_t) &idt[0];
 
@@ -81,6 +75,6 @@ void idt_install()
 		idt_setvect(i, (size_t) default_handler);
 	}
 
-	// load idt instruction
+	// load the idt pointed to by idt_idtr
 	asm("lidt [idt_idtr]");
 }

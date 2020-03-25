@@ -7,6 +7,8 @@
 extern gdt_gdtr
 global gdt_load
 
+; for use in gdt_install in gdt.c
+; updates the gdtr register and loads the gdt pointed to by gdt_gdtr
 gdt_load:
 	lgdt [gdt_gdtr]
 	mov ax, 0x10

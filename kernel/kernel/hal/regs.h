@@ -11,7 +11,7 @@
 
 #include <stdint.h>
 
-struct regs
+struct hal_registers
 {
 	uint32_t gs, fs, es, ds;
 	uint32_t edi, esi, ebp, esp, ebx, edx, ecx, eax;

@@ -9,6 +9,7 @@
  */
 
 #include <hal.h>
+#include <stdio.h>
 #include "regs.h"
 
 // see wrappers.asm
@@ -74,10 +75,10 @@ static void irq_send_eoi(int intn)
 }
 
 // handles an irq
-void irq_handler(struct regs *val)
+void irq_handler(struct hal_registers *regs)
 {
 	void(*handler)();
-	handler = irq_handlers[val->intn - 32];
+	handler = irq_handlers[regs->intn - 32];
 
 	if (handler)
 	{
@@ -85,8 +86,8 @@ void irq_handler(struct regs *val)
 	}
 	else
 	{
-		printf("Received irq %d\n", val->intn - 32);
+		printf("Received irq %d\n", regs->intn - 32);
 	}
 
-	irq_send_eoi(val->intn);
+	irq_send_eoi(regs->intn);
 }

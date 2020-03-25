@@ -82,7 +82,7 @@ void isr_install()
 }
 
 // handles an isr
-void isr_handler(struct regs* regs)
+void isr_handler(struct hal_registers* regs)
 {
 	printf("Received isr %d, error code %x\n", regs->intn, regs->error_code);
 }
