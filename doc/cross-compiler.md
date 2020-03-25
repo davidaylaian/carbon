@@ -1,6 +1,10 @@
 # Setting up the GCC Cross-Compiler
 
-In order to build Carbon, you need to have a cross-compiler. In this document, we will install GCC. First, decide where to install the cross-compiler, what versions of software to use, and what languages you want your cross compiler to support.
+In order to build Carbon, you need to have a cross-compiler. GCC is the compiler that we use, so these instructions will install GCC.
+
+## Part 1: Preliminaries and Dependencies
+
+First, decide where to install the cross-compiler, what versions of software to use, and what languages you want your cross compiler to support.
 
 ```sh
 # the cross compiler will be installed to $INSTALL/cross
@@ -26,14 +30,19 @@ sudo mkdir cross
 cd cross
 ```
 
-Before building anything, install the necessary prerequisites. On a system that uses `apt`, this looks like this:
+Before building anything, install the necessary dependencies. On a system that uses `apt`, this looks like this:
 
 ```sh
 sudo apt-get update
 sudo apt-get install gcc g++ make bison flex gawk libgmp3-dev libmpfr-dev libmpfr4 libmpfr4-dbg libmpc-dev texinfo libcloog-isl-dev build-essential gcc-multilib libc6-i386
 ```
 
-On other systems, you will have to find the equivalent packages. Now, download and unpack binutils and GCC...
+On other systems, you will have to find the equivalent packages.
+
+## Part 2: Building the Compiler
+
+Download and unpack binutils and GCC...
+
 
 ```sh
 sudo wget http://ftpmirror.gnu.org/binutils/binutils-$BINUTILS_VERSION.tar.gz
@@ -69,7 +78,7 @@ sudo make -j $JOBS install
 cd ..
 ```
 
-Now GCC.
+Finally, GCC.
 
 ```sh
 sudo mkdir build-gcc

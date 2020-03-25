@@ -2,7 +2,7 @@
 
 To build the kernel, run `make`.
 
-#### Phony Targets
+### Phony Targets
 
 - `make` and `make all`: aliased to `make kernel.bin`
 - `make clean`: delete all object files, dependencies files, and `kernel.bin` and `kernel.gz`
@@ -11,7 +11,7 @@ To build the kernel, run `make`.
 
 ## Common Problems
 
-#### i686-elf-gcc not found
+### i686-elf-gcc not found
 
 ```
 make: i686-elf-gcc: Command not found
