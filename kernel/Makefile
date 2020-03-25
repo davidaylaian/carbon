@@ -35,7 +35,7 @@ todolist:
 	@grep -rnw . -e TODO --exclude Makefile
 
 kernel.bin: Makefile $(OBJFILES) $(ASMOBJFILES)
-	@$(CC) -ffreestanding -O3 -nostdlib -lgcc -T kernel/link.ld -o kernel.bin $(filter-out $<, $^)
+	@$(CC) -ffreestanding -O3 -nostdlib -lgcc -T kernel/arch/x86/link.ld -o kernel.bin $(filter-out $<, $^)
 	@$(info kernel.bin)
 
 %.c.o: %.c Makefile

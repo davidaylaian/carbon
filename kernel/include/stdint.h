@@ -9,6 +9,8 @@
 #ifndef _STDINT_H
 #define _STDINT_H
 
+// stdint is technically architecture dependent, but this should work on all "nice" architectures that we would want to support
+
 // exact width types
 typedef signed char		int8_t;
 typedef signed short		int16_t;

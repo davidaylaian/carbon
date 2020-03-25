@@ -7,6 +7,7 @@
  */
 
 #include <attribute.h>
+#include <hal.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
