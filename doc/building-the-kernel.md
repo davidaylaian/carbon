@@ -19,4 +19,4 @@ Makefile:48: recipe for target 'kernel/kernel.c.o' failed
 make: *** [kernel/kernel.c.o] Error 127
 ```
 
-This means that you either haven't installed a cross-compiler, or it's not set up correctly. For help, see [cross-compiler.md](https://github.com/davidaylaian/carbon/blob/master/doc/cross-compiler.md).
+This means that you either haven't installed a cross-compiler, or it's not in your `PATH`. For help, see [cross-compiler.md](https://github.com/davidaylaian/carbon/blob/master/doc/cross-compiler.md).
