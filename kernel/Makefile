@@ -38,11 +38,10 @@ kernel.bin: Makefile $(OBJFILES) $(ASMOBJFILES)
 	@$(CC) -ffreestanding -O3 -nostdlib -lgcc -T kernel/arch/x86/link.ld -o kernel.bin $(filter-out $<, $^)
 	@$(info kernel.bin)
 
-%.c.o: %.c Makefile
+%.o: %.c Makefile
 	@$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
 
-# TODO: fix assembly circular dependencies
-%.asm.o: %.asm Makefile
+%.o: %.asm Makefile
 	@$(AS) $(ASFLAGS) -o $@ -felf32 $<
 
 -include $(DEPFILES)
