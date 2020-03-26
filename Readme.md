@@ -16,7 +16,7 @@ cd carbon
 
 * Make: `sudo apt-get install make`
 * NASM: `sudo apt-get install nasm`
-* GCC Cross-Compiler: [`http://wiki.osdev.org/GCC_Cross-Compiler`](https://wiki.osdev.org/GCC_Cross-Compiler)
+* GCC Cross-Compiler: [`doc/cross-compiler.md`](https://github.com/davidaylaian/carbon/blob/master/doc/cross-compiler.md)
 * Xorriso: `sudo apt-get install xorriso`
 
 ### Step 3: Build the kernel
@@ -29,7 +29,7 @@ make
 cd ..
 ```
 
-You need a [cross-compiler](https://github.com/davidaylaian/carbon/blob/master/doc/cross-compiler.md) for this step. Additional important information and common problems can be found in [`doc/building-the-kernel.md`](https://github.com/davidaylaian/carbon/blob/master/doc/building-the-kernel.md).
+Additional information and common problems can be found in [`doc/building-the-kernel.md`](https://github.com/davidaylaian/carbon/blob/master/doc/building-the-kernel.md).
 
 ### Step 4: Build Carbon-x86.iso
 
