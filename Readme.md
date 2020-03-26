@@ -29,7 +29,7 @@ make
 cd ..
 ```
 
-You need a [cross-compiler](https://github.com/davidaylaian/carbon/blob/master/doc/cross-compiler.md) for this step. Additional important information and common problems can be found in [`doc/building.md`](https://github.com/davidaylaian/carbon/blob/master/doc/building.md).
+You need a [cross-compiler](https://github.com/davidaylaian/carbon/blob/master/doc/cross-compiler.md) for this step. Additional important information and common problems can be found in [`doc/building-the-kernel.md`](https://github.com/davidaylaian/carbon/blob/master/doc/building-the-kernel.md).
 
 ### Step 4: Build Carbon-x86.iso
 
