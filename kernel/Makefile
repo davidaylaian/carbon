@@ -18,32 +18,28 @@ ASMOBJFILES := $(patsubst %.asm, %.asm.o, $(ASMSRCFILES))
 ASMDEPFILES := $(patsubst %.asm, %.asm.d, $(ASMSRCFILES))
 ALLFILES := $(SRCFILES) $(HDRFILES) $(ASMSRCFILES) $(DOCFILES) Makefile
 
-.PHONY: all
+.PHONY: all clean dist tar todolist
+.SUFFIXES: .c .asm .o
+
 all: kernel.bin
 
-.PHONY: clean
 clean:
-	@$(RM) $(wildcard $(OBJFILES) $(ASMOBJFILES) $(DEPFILES) $(ASMDEPFILES) kernel.bin kernel.gz)
+	$(RM) $(wildcard $(OBJFILES) $(ASMOBJFILES) $(DEPFILES) $(ASMDEPFILES) kernel.bin kernel.gz)
 
-.PHONY: dist tar
 dist tar: clean
-	@tar czf kernel.gz $(ALLFILES)
-	@$(info kernel.gz)
+	tar czf kernel.gz $(ALLFILES)
 
-.PHONY: todolist
 todolist:
-	@grep -rnw . -e TODO --exclude Makefile
+	grep -rnw . -e TODO --exclude Makefile
 
 kernel.bin: Makefile $(OBJFILES) $(ASMOBJFILES)
-	@$(CC) -ffreestanding -O3 -nostdlib -lgcc -T kernel/arch/x86/link.ld -o kernel.bin $(filter-out $<, $^)
-	@$(info kernel.bin)
+	$(CC) -ffreestanding -O3 -nostdlib -lgcc -T kernel/arch/x86/link.ld -o kernel.bin $(filter-out $<, $^)
 
-%.c.o: %.c Makefile
-	@$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
+%.c.o: %.c
+	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
 
-# TODO: fix assembly circular dependencies
-%.asm.o: %.asm Makefile
-	@$(AS) $(ASFLAGS) -o $@ -felf32 $<
+%.asm.o: %.asm
+	$(AS) $(ASFLAGS) -o $@ -felf32 $<
 
 -include $(DEPFILES)
 -include $(ASMDEPFILES)
