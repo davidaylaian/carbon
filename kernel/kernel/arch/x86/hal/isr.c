@@ -7,7 +7,7 @@
  */
 
 #include <stdio.h>
-#include <hal.h>
+#include <kernel/hal.h>
 #include "regs.h"
 
 // see wrappers.asm

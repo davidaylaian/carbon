@@ -6,7 +6,7 @@
  *
  */
 
-#include <hal.h>
+#include <kernel/hal.h>
 
 //map the 8259A PIC to use interrupts 32-47
 void pic_remap()

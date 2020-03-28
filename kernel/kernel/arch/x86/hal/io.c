@@ -6,6 +6,7 @@
  *
  */
 
+#include <kernel/hal.h>
 #include <stdint.h>
 
 // enable interrupts

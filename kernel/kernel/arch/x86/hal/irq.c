@@ -8,7 +8,7 @@
  *
  */
 
-#include <hal.h>
+#include <kernel/hal.h>
 #include <stdio.h>
 #include "regs.h"
 

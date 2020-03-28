@@ -7,7 +7,7 @@
  */
 
 #include <stdio.h>
-#include <terminal.h>
+#include <kernel/terminal.h>
 
 void putchar(char c)
 {
