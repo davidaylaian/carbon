@@ -6,8 +6,8 @@
  *
  */
 
-#ifndef _TERMINAL_H
-#define _TERMINAL_H
+#ifndef _KERNEL_TERMINAL_H
+#define _KERNEL_TERMINAL_H
 
 #include <attribute.h>
 #include <stddef.h>

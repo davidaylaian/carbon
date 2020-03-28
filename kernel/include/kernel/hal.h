@@ -6,8 +6,8 @@
  *
  */
 
-#ifndef HAL_H
-#define HAL_H
+#ifndef _KERNEL_HAL_H
+#define _KERNEL_HAL_H
 
 #include <stddef.h>
 #include <stdint.h>

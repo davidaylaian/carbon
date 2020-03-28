@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <terminal.h>
+#include <kernel/terminal.h>
 
 // writes a string plus a newline to stdout
 void puts(const char *str)

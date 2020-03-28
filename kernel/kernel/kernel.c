@@ -6,9 +6,9 @@
  *
  */
 
+#include <kernel/hal.h>
 #include <stdio.h>
-#include <terminal.h>
-#include <hal.h>
+#include <kernel/terminal.h>
 
 void kernel_main()
 {

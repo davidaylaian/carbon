@@ -6,7 +6,7 @@
  *
  */
 
-#include <hal.h>
+#include <kernel/hal.h>
 
 void gdt_install();
 void idt_install();

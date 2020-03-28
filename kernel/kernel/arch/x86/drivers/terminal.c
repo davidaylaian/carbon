@@ -10,7 +10,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
-#include <hal.h>
+#include <kernel/hal.h>
 
 // TODO: Add a way to change the terminal color
 

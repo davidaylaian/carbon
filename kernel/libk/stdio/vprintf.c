@@ -10,7 +10,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
-#include <terminal.h>
+#include <kernel/terminal.h>
 
 int vprintf(const char* format, va_list args)
 {
