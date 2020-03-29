@@ -12,6 +12,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#define _PIT_RATE 1000
+
 void hal_initialize();
 
 // interrupts
@@ -26,5 +28,10 @@ void outw(uint16_t port, uint16_t val);
 // inport
 uint8_t inb(uint16_t port);
 uint16_t inw(uint16_t port);
+
+//pit utilities
+uint32_t get_pit_tick(void);
+uint16_t get_pit_rate(void);
+void pit_install(void);
 
 #endif
