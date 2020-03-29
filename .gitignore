@@ -8,6 +8,7 @@
 *.kate-swp
 .swo
 .swp
+.vscode
 
 # Dependency Files
 *.d

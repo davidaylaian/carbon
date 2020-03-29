@@ -12,6 +12,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#define TIMER_RATE 1000
+
 void hal_initialize();
 
 // interrupts
@@ -26,5 +28,9 @@ void outw(uint16_t port, uint16_t val);
 // inport
 uint8_t inb(uint16_t port);
 uint16_t inw(uint16_t port);
+
+// timer utilities
+uint32_t get_timer_tick();
+uint16_t get_timer_rate();
 
 #endif
