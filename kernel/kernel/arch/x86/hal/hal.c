@@ -18,6 +18,7 @@ void hal_initialize()
 	gdt_install();
 	idt_install();
 	pic_remap();
+	pit_install();
 }
 
 void setvect(size_t intn, size_t handler)

@@ -57,6 +57,9 @@ void pit_handler(void)
     __pitc__++;
 }
 
+/*
+ * to be called by hal_initialize
+ */
 void pit_install(void)
 {
     //first, install PIT handler to IRQ0
