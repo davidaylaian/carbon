@@ -15,7 +15,6 @@
  */
 
 #include <kernel/hal.h>
-#include <stdio.h>
 
 /*
  * Stores tick count. Volatile uint32.
@@ -29,10 +28,10 @@ static volatile uint16_t __pitr__ = TIMER_RATE;
  */
 static void set_pit_rate(size_t hz)
 {
-    __pitr__ = (uint16_t) (1193180 / ((uint32_t) hz));
-    outb(0x43, 0x36);
-    outb(0x40, (uint8_t) (__pitr__ & 0xFF));
-    outb(0x40, (uint8_t) (__pitr__ >> 8));
+	__pitr__ = (uint16_t) (1193180 / ((uint32_t) hz));
+	outb(0x43, 0x36);
+	outb(0x40, (uint8_t) (__pitr__ & 0xFF));
+	outb(0x40, (uint8_t) (__pitr__ >> 8));
 }
 
 /*
@@ -40,7 +39,7 @@ static void set_pit_rate(size_t hz)
  */
 uint32_t get_timer_tick(void)
 {
-    return __pitc__;
+	return __pitc__;
 }
 
 /*
@@ -48,7 +47,7 @@ uint32_t get_timer_tick(void)
  */
 uint16_t get_timer_rate(void)
 {
-    return __pitr__;
+	return __pitr__;
 }
 
 /*
@@ -56,7 +55,7 @@ uint16_t get_timer_rate(void)
  */
 void pit_handler(void)
 {
-    __pitc__++;
+	__pitc__++;
 }
 
 /*
@@ -64,7 +63,7 @@ void pit_handler(void)
  */
 void pit_install(void)
 {
-    // install PIT handler to IRQ0
-    setvect(0x00, (size_t) pit_handler);
-    set_pit_rate(__pitr__);
+	// install PIT handler to IRQ0
+	irq_handler_install(0x00, (size_t) pit_handler);
+	set_pit_rate(__pitr__);
 }

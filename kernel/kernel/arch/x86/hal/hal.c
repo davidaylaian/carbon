@@ -11,6 +11,8 @@
 void gdt_install();
 void idt_install();
 void pic_remap();
+void isr_install();
+void irq_install();
 void pit_install();
 void idt_setvect();
 
@@ -19,6 +21,8 @@ void hal_initialize()
 	gdt_install();
 	idt_install();
 	pic_remap();
+	isr_install();
+	irq_install();
 	pit_install();
 }
 

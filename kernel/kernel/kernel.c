@@ -16,11 +16,9 @@ void kernel_main()
 	terminal_install();
 	hal_initialize();
 	printf("kernel_main()\n");
-	enable();
 
-	/*while (1)
-	{
-		char* str = "         ";
-		printf("get_timer_tick() = %s\n", itoa(get_timer_tick(), str, 10));
-	}*/
+	// this will be part of pic.c probably later on
+	outb(0x21, 0b11111110);
+	outb(0xA1, 0b11111111);
+	enable();
 }

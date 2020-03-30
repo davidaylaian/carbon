@@ -20,6 +20,7 @@ void hal_initialize();
 void enable();
 void disable();
 void setvect(size_t intn, size_t handler);
+void irq_handler_install(uint8_t irq, void(*handler)());
 
 // outport
 void outb(uint16_t port, uint8_t val);
