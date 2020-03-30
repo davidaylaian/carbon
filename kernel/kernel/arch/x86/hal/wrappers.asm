@@ -285,7 +285,7 @@ irq_wrapper_0:
 	cli
 	push byte 0
 	push byte 32
-	jmp isr_wrapper
+	jmp irq_wrapper
 
 irq_wrapper_1:
 	cli

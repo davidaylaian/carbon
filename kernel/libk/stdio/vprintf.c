@@ -48,12 +48,10 @@ int vprintf(const char* format, va_list args)
 					break;
 				}
 
-				// TODO: Fix this section
-				/*
 				case 'i':
 				case 'd':
 				{
-					char buf[BUF_SIZE] = {0};
+					char buf[12] = {0};
 					terminal_print(itoa(va_arg(args, int), buf, 10));
 					res += strlen(buf);
 					break;
@@ -61,7 +59,7 @@ int vprintf(const char* format, va_list args)
 
 				case 'u':
 				{
-					char buf[BUF_SIZE] = {0};
+					char buf[12] = {0};
 					terminal_print(itoa(va_arg(args, unsigned int), buf, 10));
 					res += strlen(buf);
 					break;
@@ -70,7 +68,7 @@ int vprintf(const char* format, va_list args)
 				case 'X':
 				case 'x':
 				{
-					char buf[BUF_SIZE] = {0};
+					char buf[12] = {0};
 					terminal_print("0x");
 					res += 2;
 					terminal_print(itoa(va_arg(args, int), buf, 16));
@@ -80,7 +78,7 @@ int vprintf(const char* format, va_list args)
 
 				case 'b':
 				{
-					char buf[BUF_SIZE] = {0};
+					char buf[12] = {0};
 					terminal_print("0b");
 					res += 2;
 					terminal_print(itoa(va_arg(args, int), buf, 2));
@@ -90,7 +88,7 @@ int vprintf(const char* format, va_list args)
 
 				case 'o':
 				{
-					char buf[BUF_SIZE] = {0};
+					char buf[12] = {0};
 					putchar('0');
 					res += 1;
 					terminal_print(itoa(va_arg(args, int), buf, 8));
@@ -104,7 +102,7 @@ int vprintf(const char* format, va_list args)
 					*tmp = res;
 					break;
 				}
-				*/
+				
 
 				default:
 				{
