@@ -57,6 +57,7 @@ uint16_t get_timer_rate(void)
 void pit_handler(void)
 {
 	__pitc__++;
+    //printf("Call me.\n");
 }
 
 /*
