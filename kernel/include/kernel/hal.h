@@ -12,7 +12,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#define TIMER_RATE 1000
+#define TIMER_RATE 1193
 
 void hal_initialize();
 

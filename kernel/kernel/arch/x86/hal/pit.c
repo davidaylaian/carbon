@@ -15,6 +15,7 @@
  */
 
 #include <kernel/hal.h>
+#include <stdio.h>
 
 /*
  * Stores tick count. Volatile uint32.
@@ -56,6 +57,7 @@ uint16_t get_timer_rate(void)
 void pit_handler(void)
 {
 	__pitc__++;
+    //printf("Call me.\n");
 }
 
 /*

@@ -85,4 +85,12 @@ void isr_install()
 void isr_handler(struct hal_registers* regs)
 {
 	printf("Received isr %d, error code %x\n", regs->intn, regs->error_code);
+	printf("gs: %x  fs: %x  es: %x  ds: %x\n", regs->gs, regs->fs, regs->es, regs->ds);
+	printf("edi: %x  esi: %x  ebp: %x  esp: %x\n", regs->edi, regs->esi, regs->ebp, regs->esp);
+	printf("ebx: %x  edx: %x  ecx: %x  eax: %x\n", regs->ebx, regs->edx, regs->ecx, regs->eax);
+	printf("eip: %x\n", regs->eip);
+	printf("cs: %x\n", regs->cs);
+	printf("eflags: %x\n", regs->eflags);
+	printf("useresp: %x\n", regs->useresp);
+	printf("ss: %x\n", regs->ss);
 }
