@@ -66,6 +66,6 @@ void pit_handler(void)
 void pit_install(void)
 {
 	// install PIT handler to IRQ0
-	irq_handler_install(0x00, (size_t) pit_handler);
+	irq_handler_install(0x00, pit_handler);
 	set_pit_rate(__pitr__);
 }
