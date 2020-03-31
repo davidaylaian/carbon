@@ -6,9 +6,8 @@
  *
  */
 
-#include <attribute.h>
+#include <string.h>
 #include <stdbool.h>
-#include <stddef.h>
 #include <stdint.h>
 #include <kernel/hal.h>
 
@@ -16,7 +15,8 @@
 
 static const uint8_t MAX_SCANLINE = 16;
 static const size_t TERMINAL_WIDTH  = 80;
-static const size_t TERMINAL_HEIGHT = 25;
+//QEMU uses 23 line console for some reason
+static const size_t TERMINAL_HEIGHT = 23; 
 static const uint8_t HORIZ_TAB_SIZE = 8;
 static const uint8_t VERT_TAB_SIZE = 8;
 
@@ -151,7 +151,14 @@ static void terminal_write_char_internal(char c)
 
 		// backspace
 		case '\b':
-			// TODO: Support backspace character
+			terminal_set_char(' ', xpos-1, ypos);
+			if (!xpos && ypos) {
+				ypos--;
+				xpos = TERMINAL_WIDTH - 1;
+			}
+			else if (xpos) {
+				xpos--;
+			}
 			break;
 
 		// formfeed
@@ -178,13 +185,14 @@ static void terminal_write_char_internal(char c)
 	}
 
 	// scroll if we are out of room on all lines
-	if (ypos == TERMINAL_HEIGHT)
+	if (ypos >= TERMINAL_HEIGHT)
 	{
-		ypos--;
-		for (size_t i = 0; i < TERMINAL_HEIGHT; i++)
-		{
-			vidmem[i] = vidmem[i + TERMINAL_HEIGHT];
-		}
+		size_t _t = ypos - TERMINAL_HEIGHT + 1;
+		memcpy(vidmem, vidmem + _t * TERMINAL_WIDTH, 
+				2* TERMINAL_WIDTH * (TERMINAL_HEIGHT - _t));
+		memset(vidmem + TERMINAL_WIDTH * (TERMINAL_HEIGHT - _t), 0, 
+				2*TERMINAL_WIDTH);
+		ypos = TERMINAL_HEIGHT - 1;
 	}
 }
 
