@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # UTILITY SCRIPT FOR BUILDING KERNEL AND RUNNING IT WITH QEMU
+echo -e 'WARNING: This utility is deprecated!'
 
 cd kernel
 make
