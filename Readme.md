@@ -21,24 +21,23 @@ cd carbon
 
 ### Step 3: Build the kernel
 
-To build the kernel, run `make` inside of the kernel directory.
+To build the kernel, run `make` inside of either the kernel directory or root directory.
 
 ```bash
 cd kernel
 make
 cd ..
 ```
+OR
+```bash
+make
+```
 
 Additional information and common problems can be found in [`doc/building-the-kernel.md`](https://github.com/davidaylaian/carbon/blob/master/doc/building-the-kernel.md).
 
 ### Step 4: Build Carbon-x86.iso
 
-To build Carbon-x86.iso, copy kernel/kernel.bin to sysroot/boot, and use `grub-mkrescue` to build the disk image.
-
-```bash
-cp kernel/kernel.bin sysroot/boot
-grub-mkrescue -o Carbon-x86.iso sysroot
-```
+To build Carbon-x86.iso, run `make build` in the root directory
 
 ## Running
 
@@ -46,3 +45,5 @@ Any emulator should work, but we reccomend qemu.
 
 To install qemu: `sudo apt-get install qemu`<br>
 To use qemu: `qemu-system-i386 -cdrom Carbon-x86.iso`
+
+Running `make test` automatically builds and launches qemu with the iso in order to test it.
