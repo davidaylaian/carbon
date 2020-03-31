@@ -35,11 +35,12 @@ static uint8_t *keybuf;
 static uint8_t enqueue(uint8_t v)
 {
     if (((front == 0) && (rear == (int32_t) (keybuf_size - 1)))
-            || (front == rear + 1))
+            || (front == rear + 1)) {
         return 255; /* buffer overflow */
-    else {
-        if (front == -1)
+    } else {
+        if (front == -1) {
             front = 0;
+        }
         rear = (rear + 1) % keybuf_size;
         keybuf[rear] = v;
     }
@@ -50,14 +51,15 @@ static uint8_t enqueue(uint8_t v)
 static uint8_t dequeue()
 {
     uint8_t v;
-    if (front == -1)
+    if (front == -1) {
         v = 0; /* buffer underflow */
-    else {
+    } else {
         v = keybuf[front];
-        if (front == rear)
+        if (front == rear) {
             front = (rear = -1);
-        else
+        } else {
             front = (front + 1) % keybuf_size;
+        }
     }
 
     return v;
@@ -94,42 +96,28 @@ uint8_t keycode_to_char_shft[128] =
 uint8_t keystate_table[128] = 
 {
     0, /* reserved */
-    68, /* escape */
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, /*1-9, 0*/
-    11, /* -/_ key */
-    12, /* =/+ key */
-    13, /* backspace */
-    14, /* tab */
-    15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
-    27, /* enter */
-    69, /* Left Control */
-    28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
-    70, /* Left Shift */
-    40,
-    41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
-    71, /* Right Shift */
-    51, /* Keypad * */
-    72, /* Left Alt */
-    52, /* Space */
-    73, /* Capslock */
-    74, 75, 76, 77, 78, 79, 80, 81, 82, 83, /* F1 - F10 */
-    84, /* Number Lock */
-    85, /* Scroll Lock */
-    53,  /* Keypad 7 (HOME) */
-    54,  /* Keypad 8 (ARROW UP) */
-    55,  /* Keypad 9 (PGUP) */
-    56, /* Keypad - */
-    57, /* Keypad 4 (ARROW LEFT) */
-    58, /* Keypad 5 */
-    59, /* Keypad 6 (ARROW RIGHT) */
-    60, /* Keypad + */
-    61, /* Keypad 1 (END) */
-    62, /* Keypad 2 (ARROW DOWN) */
-    63, /* Keypad 3 (PGDN) */
-    64, /* Keypad 0 (INS) */
-    65, /* Keypad . (DEL) */
+    KEYCODE_ESCAPE, KEYCODE_1, KEYCODE_2, KEYCODE_3, KEYCODE_4, KEYCODE_5,
+    KEYCODE_6, KEYCODE_7, KEYCODE_8, KEYCODE_9, KEYCODE_0,
+    KEYCODE_HYPHEN, KEYCODE_EQUALS, KEYCODE_BACKSPACE, KEYCODE_TAB,
+    KEYCODE_Q, KEYCODE_W, KEYCODE_E, KEYCODE_R, KEYCODE_T, KEYCODE_Y, 
+    KEYCODE_U, KEYCODE_I, KEYCODE_O, KEYCODE_P, 
+    KEYCODE_LBRACK, KEYCODE_RBRACK, KEYCODE_ENTER, KEYCODE_LCONTROL, 
+    KEYCODE_A, KEYCODE_S, KEYCODE_D, KEYCODE_F, KEYCODE_G, KEYCODE_H,
+    KEYCODE_J, KEYCODE_K, KEYCODE_L, KEYCODE_SEMICOLON, KEYCODE_QUOTE, 
+    KEYCODE_BACKTICK, KEYCODE_LSHIFT, KEYCODE_BACKSLASH,
+    KEYCODE_Z, KEYCODE_X, KEYCODE_C, KEYCODE_V, KEYCODE_B, KEYCODE_N,
+    KEYCODE_M, KEYCODE_COMMA, KEYCODE_PERIOD, KEYCODE_SLASH, KEYCODE_RSHIFT,
+    KEYCODE_KEYPAD_MULTIPLY, KEYCODE_LALT, KEYCODE_SPACE, KEYCODE_CAPS_LOCK,
+    KEYCODE_F1, KEYCODE_F2, KEYCODE_F3, KEYCODE_F4, KEYCODE_F5, KEYCODE_F6,
+    KEYCODE_F7, KEYCODE_F8, KEYCODE_F9, KEYCODE_F10, 
+    KEYCODE_NUMBER_LOCK, KEYCODE_SCROLL_LOCK,
+    KEYCODE_KEYPAD_7, KEYCODE_KEYPAD_8, KEYCODE_KEYPAD_9, 
+    KEYCODE_KEYPAD_SUBTRACT,
+    KEYCODE_KEYPAD_4, KEYCODE_KEYPAD_5, KEYCODE_KEYPAD_6, KEYCODE_KEYPAD_ADD,
+    KEYCODE_KEYPAD_1, KEYCODE_KEYPAD_2, KEYCODE_KEYPAD_3, KEYCODE_KEYPAD_0,
+    KEYCODE_KEYPAD_DECIMAL,
     0, 0, 0, /* reserved */
-    86, 87, /* F11 and F12 */
+    KEYCODE_F11, KEYCODE_F12,
     0, /* reserved */
 };
 
@@ -137,81 +125,45 @@ uint8_t keystate_ext_table[128] =
 {
     0, 0, 0, 0, 0, 0, 0, 0, /*0x07*/
     0, 0, 0, 0, 0, 0, 0, 0, /*0x0F*/
-    88, /* previous track */
-    0, 0, 0, 0, 0, 0, 0, /*0x17*/
-    0,
-    89, /* next track */
-    0, 0,
-    66, /* keypad enter */
-    90, /* right control */
+    KEYCODE_PREVIOUS_TRACK, 0, 0, 0, 0, 0, 0, 0, /*0x17*/
+    0, KEYCODE_NEXT_TRACK, 0, 0, KEYCODE_KEYPAD_ENTER, KEYCODE_RCONTROL,
     0, 0, /*0x1F*/
-    91, /* mute */
-    92, /* calculator */
-    93, /* play */
-    0,
-    94, /* stop */
+    KEYCODE_MUTE, KEYCODE_CALCULATOR, KEYCODE_PLAY, 0, KEYCODE_STOP,
     0, 0, 0, /*0x27*/
-    0, 0, 0, 0, 0, 0,
-    95, /* volume down */
-    0, /*0x2F*/
-    96, /* volume up */
-    0,
-    97, /* www home */
-    0, 0,
-    67, /* keypad / */
+    0, 0, 0, 0, 0, 0, KEYCODE_VOLUME_DOWN, 0, /*0x2F*/
+    KEYCODE_VOLUME_UP, 0, KEYCODE_WWW_HOME, 0, 0, KEYCODE_KEYPAD_DIVIDE,
     0, 0, /*0x37*/
-    98, /* right alt */
-    0, 0, 0, 0, 0, 0, /*0x3F*/
-    0, 0, 0, 0, 0, 0, 0,
-    99, /* home */ /*0x47*/
-    100, /* cursor up */
-    101, /* page up */
-    0, 
-    102, /* cursor left */
-    0,
-    103, /* cursor right */
-    0,
-    104, /* end */ /*0x4F*/
-    105, /* cursor down */
-    106, /* page down */
-    107, /* insert */
-    108, /* delete */
+    KEYCODE_RALT, 0, 0, 0, 0, 0, 0, /*0x3F*/
+    0, 0, 0, 0, 0, 0, 0, KEYCODE_HOME, /*0x47*/
+    KEYCODE_UP, KEYCODE_PAGE_UP, 0, KEYCODE_LEFT, 0, KEYCODE_RIGHT, 0,
+    KEYCODE_END, /*0x4F*/
+    KEYCODE_DOWN, KEYCODE_PAGE_DOWN, KEYCODE_INSERT, KEYCODE_DELETE,
     0, 0, 0, 0, /*0x57*/
-    0, 0, 0,
-    109, /* left GUI */
-    110, /* right GUI */
-    111, /* apps */
-    112, /* ACPI power */
-    113, /* ACPI sleep */ /*0x5F*/
-    0, 0, 0,
-    114, /* ACPI wake */
-    0,
-    115, /* WWW search */
-    116, /* WWW favorites */
-    117, /* WWW refresh */ /*0x67*/
-    118, /* WWW stop */
-    119, /* WWW forward */
-    120, /* WWW back */
-    121, /* my computer */
-    122, /* email */
-    123, /* media select */
+    0, 0, 0, KEYCODE_LEFT_GUI, KEYCODE_RIGHT_GUI, KEYCODE_APPS, 
+    KEYCODE_ACPI_POWER, KEYCODE_ACPI_SLEEP, /*0x5F*/
+    0, 0, 0, KEYCODE_ACPI_WAKE, 0, KEYCODE_WWW_SEARCH, KEYCODE_WWW_FAVORITES,
+    KEYCODE_WWW_REFRESH, /*0x67*/
+    KEYCODE_WWW_STOP, KEYCODE_WWW_FORWARD, KEYCODE_WWW_BACK,
+    KEYCODE_MY_COMPUTER, KEYCODE_EMAIL, KEYCODE_MEDIA_SELECT, 
     0, /* reserved */
 };
 
 char keycode_to_text(uint8_t keycode)
 {
     char _r;
-    if(keycode < 0x80 && keycode_to_char[keycode]) {
-        if (keyboard_state.lshft || keyboard_state.rshft)
+    if(KEYCODE_IS_PRESS(keycode) && keycode_to_char[keycode]) {
+        if (keyboard_state.lshft || keyboard_state.rshft) {
             _r = keycode_to_char_shft[keycode];
-        else
+        } else {
             _r = keycode_to_char[keycode];
+        }
 
         if (keyboard_state.capslock) {
-            if ((_r > 0x40) && (_r < 0x5B))
-                _r += 0x20;
-            else if ((_r > 0x60) && (_r < 0x7B))
-                _r -= 0x20;
+            if (IS_UPPERCASE(_r)) {
+                _r = UPPER_TO_LOWER(_r);
+            } else if (IS_LOWERCASE(_r)) {
+                _r = LOWER_TO_UPPER(_r);
+            }
         }
 
         return _r;
@@ -223,8 +175,9 @@ char keycode_to_text(uint8_t keycode)
 void update_keyboard_state(uint8_t keycode)
 {
     char _t;
-    if (keyboard_state.halted)
+    if (keyboard_state.halted) {
         return;
+    }
     
     switch (keyboard_state.mode) {
     case KEYALL:
@@ -263,61 +216,61 @@ void update_keyboard_state(uint8_t keycode)
     }
     
     switch (keycode) {
-    case 69:
+    case KEYCODE_LCONTROL:
         keyboard_state.lctrl = true; 
         break;
-    case 70:
+    case KEYCODE_LSHIFT:
         keyboard_state.lshft = true; 
         break;
-    case 71:
+    case KEYCODE_RSHIFT:
         keyboard_state.rshft = true; 
         break;
-    case 72:
+    case KEYCODE_LALT:
         keyboard_state.lalt = true; 
         break;
-    case 73:
+    case KEYCODE_CAPS_LOCK:
         keyboard_state.capslock ^= 1; 
         break;
-    case 84:
+    case KEYCODE_NUMBER_LOCK:
         keyboard_state.numlock ^= 1; 
         break;
-    case 85:
+    case KEYCODE_SCROLL_LOCK:
         keyboard_state.scrolllock ^= 1; 
         break;
-    case 90:
+    case KEYCODE_RCONTROL:
         keyboard_state.rctrl = true; 
         break;
-    case 98:
+    case KEYCODE_RALT:
         keyboard_state.ralt = true; 
         break;
-    case 107:
+    case KEYCODE_INSERT:
         keyboard_state.insert ^= 1; 
         break;
-    case 108:
+    case KEYCODE_DELETE:
         keyboard_state.del = true; 
         break;
-    case 125:
+    case KEYCODE_PAUSE:
         keyboard_state.paused ^= 1; 
         break;
-    case 197:
+    case KEYCODE_MAKE_RELEASE(KEYCODE_LCONTROL):
         keyboard_state.lctrl = false; 
         break;
-    case 198:
+    case KEYCODE_MAKE_RELEASE(KEYCODE_LSHIFT):
         keyboard_state.lshft = false; 
         break;
-    case 199:
+    case KEYCODE_MAKE_RELEASE(KEYCODE_RSHIFT):
         keyboard_state.rshft = false; 
         break;
-    case 200:
+    case KEYCODE_MAKE_RELEASE(KEYCODE_LALT):
         keyboard_state.lalt = false; 
         break;
-    case 218:
+    case KEYCODE_MAKE_RELEASE(KEYCODE_RCONTROL):
         keyboard_state.rctrl = false; 
         break;
-    case 226:
+    case KEYCODE_MAKE_RELEASE(KEYCODE_RALT):
         keyboard_state.ralt = false; 
         break;
-    case 236:
+    case KEYCODE_MAKE_RELEASE(KEYCODE_DELETE):
         keyboard_state.del = false; 
         break;
     }
@@ -333,78 +286,81 @@ uint8_t next_keycode()
 void keyboard_handler()
 {
     /* check status register */
-    uint8_t _stat = inb(0x64);
-    uint8_t _keycode = 255;
+    uint8_t _stat = inb(PS2_STATUS);
+    uint8_t _keycode = KEYCODE_ERROR;
 
     /* set errors */
-    if (_stat & 0x80)
+    if (PS2_ERR_PARITY(_stat)) {
         __keyerror__.parity_error = true;
-    if (_stat & 0x40)
+    }
+
+    if (PS2_ERR_TIMEOUT(_stat)) {
         __keyerror__.timeout_error = true;
+    }
 
     /* read from 8042 output buffer */
-    if (_stat & 0x01) {
-        uint8_t _s = inb(0x60);
+    if (PS2_OUTPUT_BUFFER_FULL(_stat)) {
+        uint8_t _s = inb(PS2_DATA);
         //printf("%x ", _s);
         uint8_t _p;
 
         /* firstly check if sequence is multibyte */
-        if (_s == 0xE0) {
-            _s = inb(0x60);
+        if (PS2_IS_MULTIBYTE(_s)) {
+            _s = inb(PS2_DATA);
             
-            if (_s == 0x2A) {
-                if ((inb(0x60) == 0xE0) && (inb(0x60) == 0x37))
-                    _keycode = 124; /* 124 is printscreen's keycode */
+            if (_s == SCANCODE_PRINT_SCREEN_PRESS) {
+                if ((inb(PS2_DATA) == SCANCODE_MULTI) 
+                    && (inb(PS2_DATA) == SCANCODE_PRINT_SCREEN_PRESS2)) {
+                    _keycode = KEYCODE_PRINT_SCREEN; 
+                }
             }
-            else if (_s == 0xB7) {
-                if ((inb(0x60) == 0xE0) && (inb(0x60) == 0xAA))
-                    _keycode = (124 | 0x80);
+            else if (_s == SCANCODE_PRINT_SCREEN_RELEASE) {
+                if ((inb(PS2_DATA) == SCANCODE_MULTI) 
+                    && (inb(PS2_DATA) == SCANCODE_PRINT_SCREEN_RELEASE2)) {
+                    _keycode = KEYCODE_MAKE_RELEASE(KEYCODE_PRINT_SCREEN);
+                }
             }
-            else if (keystate_ext_table[_s & 0x7F]) {
-                if (_s & 0x80)
-                    _p = (_s ^ 0x80) / 32;
-                else
-                    _p = _s / 32;
+            else if (keystate_ext_table[GET_RAW_SCANCODE(_s)]) {
+                _p = GET_RAW_SCANCODE(_s) / 32;
     
                 __keystate_ext__[_p] ^= (1 << (_s % 32));
                 _keycode = keystate_ext_table[_s];
                 
-                if (_s & 0x80)
-                    _keycode |= 0x80;
+                if (SCANCODE_IS_RELEASE(_s)) {
+                   _keycode = KEYCODE_MAKE_RELEASE(_keycode);
+                }
             }
             else {
                 __keyerror__.und_key = true;
-                _keycode = 126; /* keycode for an undefined */
+                _keycode = KEYCODE_UNDEFINED;
             }
                
         }
-        else if (_s == 0xE1) {
-            if ((inb(0x60) == 0x1D) 
-                && (inb(0x60) == 0x1D) 
-                && (inb(0x60) == 0x1D) 
-                && (inb(0x60) == 0x1D) 
-                && (inb(0x60) == 0x1D))
-                _keycode = 125; /* keycode for pause */
-            else {
+        else if (PS2_IS_PAUSE(_s)) {
+            if ((inb(PS2_DATA) == SCANCODE_PAUSE_1) 
+                && (inb(PS2_DATA) == SCANCODE_PAUSE_2) 
+                && (inb(PS2_DATA) == SCANCODE_PAUSE_3) 
+                && (inb(PS2_DATA) == SCANCODE_PAUSE_4) 
+                && (inb(PS2_DATA) == SCANCODE_PAUSE_5)) {
+                _keycode = KEYCODE_PAUSE;
+            } else {
                 __keyerror__.und_key = true;
-                _keycode = 126; /* keycode for an undefined */
+                _keycode = KEYCODE_UNDEFINED;
             }
         }
-        else if (keystate_table[_s & 0x7F]) {
-            if (_s & 0x80)
-                _p = (_s ^ 0x80) / 32;
-            else
-                _p = _s / 32;
+        else if (keystate_table[GET_RAW_SCANCODE(_s)]) {
+            _p = GET_RAW_SCANCODE(_s) / 32;
     
             __keystate__[_p] ^= (1 << (_s % 32));
             _keycode = keystate_table[_s];
             //printf("%x", _keycode);
-            if (_s & 0x80)
-                _keycode |= 0x80;
+            if (SCANCODE_IS_RELEASE(_s)) {
+                _keycode = KEYCODE_MAKE_RELEASE(_keycode);
+            }
         }
         else {
             __keyerror__.und_key = true;
-            _keycode = 126; /* keycode for an undefined */
+            _keycode = KEYCODE_UNDEFINED;
         }
     }
 
@@ -414,7 +370,7 @@ void keyboard_handler()
 
 void keyboard_install(enum keyboard_mode k, uint8_t *buf, size_t buf_sz)
 {
-#if defined(KEYBOARD)
+#ifdef KEYBOARD
     irq_handler_install(0x01, keyboard_handler);
     //printf("Keyboard installed.\n");
 #endif

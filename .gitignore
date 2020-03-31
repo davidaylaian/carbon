@@ -18,6 +18,3 @@
 *.img
 *.bin
 *.o
-
-#my files
-kernel-build.util.sh

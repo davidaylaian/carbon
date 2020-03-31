@@ -58,7 +58,7 @@ void pit_handler(void)
 {
 	__pitc__++;
     //printf("Call me.\n");
-#if defined(KEYBOARD_DEBUG)
+#ifdef KEYBOARD_DEBUG /* check kernel/include/kernel/keyboard.h */
     //if (!(__pitc__ % 1000))
      //  printf("%d\n", __pitc__ / 1000);
     uint8_t _k;
