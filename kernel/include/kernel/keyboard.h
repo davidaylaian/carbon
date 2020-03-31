@@ -13,8 +13,8 @@
  *
  */
 
-#if !defined(KEYBOARD_H)
-#define KEYBOARD_H
+#ifndef _KERNEL_KEYBOARD_H
+#define _KERNEL_KEYBOARD_H
 
 //this allows keyboard driver to be installed
 #define KEYBOARD
@@ -45,11 +45,11 @@ struct keyboard_error {
     bool halted;
 };
 
-extern volatile struct keyboard_state keyboard_state;
+volatile struct keyboard_state keyboard_state;
 
-extern volatile uint32_t __keystate__[8];
-extern volatile uint32_t __keystate_ext[8];
-extern volatile struct keyboard_error __keyerror__;
+volatile uint32_t __keystate__[8];
+volatile uint32_t __keystate_ext[8];
+volatile struct keyboard_error __keyerror__;
 
 void keyboard_install(enum keyboard_mode k, uint8_t *buf, size_t buf_sz);
 uint8_t next_keycode();

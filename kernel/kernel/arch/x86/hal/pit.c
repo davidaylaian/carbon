@@ -57,15 +57,16 @@ uint16_t get_timer_rate(void)
 void pit_handler(void)
 {
 	__pitc__++;
-    //printf("Call me.\n");
-#if defined(KEYBOARD_DEBUG)
-    //if (!(__pitc__ % 1000))
-     //  printf("%d\n", __pitc__ / 1000);
-    uint8_t _k;
-    while (_k = next_keycode()) {
-        printf("%c", _k);
-    }
-#endif
+
+	//if (!(__pitc__ % 1000))
+	//  printf("%d\n", __pitc__ / 1000);
+
+	#ifdef KEYBOARD_DEBUG
+	uint8_t _k;
+	while (_k = next_keycode()) {
+		printf("%c", _k);
+	}
+	#endif
 }
 
 /*
