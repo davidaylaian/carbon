@@ -16,7 +16,7 @@
 
 #include <kernel/hal.h>
 #include <stdio.h>
-
+#include <kernel/keyboard.h>
 /*
  * Stores tick count. Volatile uint32.
  * Stores tick rate. Volatile uint16.
@@ -57,7 +57,20 @@ uint16_t get_timer_rate(void)
 void pit_handler(void)
 {
 	__pitc__++;
-    //printf("Call me.\n");
+
+#ifdef KEYBOARD_DEBUG /* check kernel/include/kernel/keyboard.h */
+	//if (!(__pitc__ % 1000))
+	//  printf("%d\n", __pitc__ / 1000);
+	uint8_t _k;
+	char _c;
+
+	while ((_k = next_keycode())) {
+		char _c = keycode_to_text(_k);
+		if (_c) {
+			printf("%c", _c);
+		}
+	}
+#endif
 }
 
 /*

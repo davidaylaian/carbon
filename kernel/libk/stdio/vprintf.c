@@ -102,7 +102,6 @@ int vprintf(const char* format, va_list args)
 					*tmp = res;
 					break;
 				}
-				
 
 				default:
 				{
