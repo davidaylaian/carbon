@@ -18,6 +18,7 @@
 
 //this allows keyboard driver to be installed
 #define KEYBOARD
+//#define KEYBOARD_DEBUG
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -47,7 +48,7 @@ struct keyboard_error {
 volatile struct keyboard_state keyboard_state;
 
 volatile uint32_t __keystate__[8];
-volatile uint32_t __keystate_ext[8];
+volatile uint32_t __keystate_ext__[8];
 volatile struct keyboard_error __keyerror__;
 
 void keyboard_install(enum keyboard_mode k, uint8_t *buf, size_t buf_sz);
@@ -59,7 +60,7 @@ char keycode_to_text(uint8_t keycode);
  */
 #define PS2_STATUS 0x64
 #define PS2_COMMAND 0x64
-#define PS2_DATA 0x64
+#define PS2_DATA 0x60
 
 #define PS2_OUTPUT_BUFFER_FULL(s) ((s) & 0x01)
 #define PS2_INPUT_BUFFER_FULL(s) ((s) & 0x02)

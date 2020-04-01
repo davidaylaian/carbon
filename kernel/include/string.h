@@ -16,6 +16,13 @@ void* memset(void* dest, int src, size_t len);
 void* memcpy(void* dest, const void* src, size_t len);
 void* memmove(void* dest, const void* src, size_t len);
 
+//added for volatile support -- very much needed for kernel!
+volatile void* memsetv(volatile void *__s, int __c, size_t __n);
+volatile void* memcpyv(volatile void *__d, 
+                        const volatile void *__s, size_t __n);
+volatile void* memmovev(volatile void *__d, 
+                        const volatile void *__s, size_t __n);
+
 size_t strlen(const char* str);
 int strcmp(const char* str1, const char* str2);
 

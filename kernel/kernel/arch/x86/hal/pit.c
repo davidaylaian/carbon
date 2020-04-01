@@ -62,8 +62,12 @@ void pit_handler(void)
     //if (!(__pitc__ % 1000))
      //  printf("%d\n", __pitc__ / 1000);
     uint8_t _k;
-    while (_k = next_keycode()) {
-        printf("%c", _k);
+	char _c;
+    while ((_k = next_keycode())) {
+		char _c = keycode_to_text(_k);
+		if (_c) {
+			printf("%c", _c);
+		}
     }
 #endif
 }

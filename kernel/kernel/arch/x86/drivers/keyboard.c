@@ -17,13 +17,7 @@
 #include <kernel/hal.h>
 #include <kernel/keyboard.h>
 #include <stdbool.h>
-
-volatile struct keyboard_state keyboard_state;
-
-//Layer 1 state
-volatile uint32_t __keystate__[8] = {0};
-volatile uint32_t __keystate_ext__[8] = {0};
-volatile struct keyboard_error __keyerror__;
+#include <string.h>
 
 //static variables used for keycode queue
 static volatile int32_t front = -1;
@@ -81,7 +75,7 @@ uint8_t keycode_to_char[128] =
 
 uint8_t keycode_to_char_shft[128] = 
 {
-    '\r', '!', '@', '#', '$', '%', '^', '&', 
+    '\0', '!', '@', '#', '$', '%', '^', '&', 
     '*', '(', ')', '_', '+', '\b', '\t', 'Q',
     'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O',
     'P', '{', '}', '\n', 'A', 'S', 'D', 'F', 
@@ -151,7 +145,7 @@ uint8_t keystate_ext_table[128] =
 char keycode_to_text(uint8_t keycode)
 {
     char _r;
-    if(KEYCODE_IS_PRESS(keycode) && keycode_to_char[keycode]) {
+    if(KEYCODE_IS_PRINTABLE(keycode)) {
         if (keyboard_state.lshft || keyboard_state.rshft) {
             _r = keycode_to_char_shft[keycode];
         } else {
@@ -189,6 +183,7 @@ void update_keyboard_state(uint8_t keycode)
         break;
     case KEYDUMP:
         enqueue(keycode);
+        break;
     case KEYSMASH:
         if (enqueue(keycode)) {
             dequeue();
@@ -324,7 +319,7 @@ void keyboard_handler()
                 _p = GET_RAW_SCANCODE(_s) / 32;
     
                 __keystate_ext__[_p] ^= (1 << (_s % 32));
-                _keycode = keystate_ext_table[_s];
+                _keycode = keystate_ext_table[GET_RAW_SCANCODE(_s)];
                 
                 if (SCANCODE_IS_RELEASE(_s)) {
                    _keycode = KEYCODE_MAKE_RELEASE(_keycode);
@@ -352,7 +347,7 @@ void keyboard_handler()
             _p = GET_RAW_SCANCODE(_s) / 32;
     
             __keystate__[_p] ^= (1 << (_s % 32));
-            _keycode = keystate_table[_s];
+            _keycode = keystate_table[GET_RAW_SCANCODE(_s)];
             //printf("%x", _keycode);
             if (SCANCODE_IS_RELEASE(_s)) {
                 _keycode = KEYCODE_MAKE_RELEASE(_keycode);
@@ -370,11 +365,19 @@ void keyboard_handler()
 
 void keyboard_install(enum keyboard_mode k, uint8_t *buf, size_t buf_sz)
 {
+    //first thing is to clear the state.
+    memsetv(&keyboard_state, 0, sizeof(keyboard_state));
+    memsetv(&__keyerror__, 0, sizeof(__keyerror__));
+    //memsetv(__keystate__, 0, sizeof(__keystate__));
+    memsetv(__keystate_ext__, 0, sizeof(__keystate_ext__));
+    
 #ifdef KEYBOARD
     irq_handler_install(0x01, keyboard_handler);
     //printf("Keyboard installed.\n");
 #endif
+
     keybuf = buf;
     keybuf_size = (uint32_t) buf_sz;
     keyboard_state.mode = k;
+    keyboard_state.halted = false;
 }
