@@ -21,7 +21,7 @@ cd carbon
 
 ### Step 3: Build the kernel
 
-To build the kernel, run `make` inside of either the kernel directory or root directory.
+To build the kernel, run `make` inside of either the kernel directory or the root directory.
 
 
 Additional information and common problems can be found in [`doc/building-the-kernel.md`](https://github.com/davidaylaian/carbon/blob/master/doc/building-the-kernel.md).
