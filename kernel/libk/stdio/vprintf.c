@@ -69,8 +69,8 @@ int vprintf(const char* format, va_list args)
 				case 'x':
 				{
 					char buf[12] = {0};
-					terminal_print("0x");
-					res += 2;
+					//terminal_print("0x");
+					//res += 2;
 					terminal_print(itoa(va_arg(args, int), buf, 16));
 					res += strlen(buf);
 					break;
@@ -102,7 +102,6 @@ int vprintf(const char* format, va_list args)
 					*tmp = res;
 					break;
 				}
-				
 
 				default:
 				{

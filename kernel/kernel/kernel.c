@@ -21,13 +21,14 @@ void kernel_main()
 	hal_initialize();
 
 	//TODO: MOVE TO DIFFERENT INSTALL
-	keyboard_install(TEXTDUMP, keycode_buffer, 1024);
+	keyboard_install(KEYDUMP, keycode_buffer, 1024);
 
-	//printf("kernel_main()\n");
+	printf("kernel_main()\n");
 
 	// this will be part of pic.c probably later on
 	outb(0x21, 0b11111100);
 	outb(0xA1, 0b11111111);
-
 	enable();
+
+	printf("%X", 'z' - 'a');
 }

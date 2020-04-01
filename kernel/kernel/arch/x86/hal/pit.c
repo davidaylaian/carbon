@@ -58,15 +58,19 @@ void pit_handler(void)
 {
 	__pitc__++;
 
+#ifdef KEYBOARD_DEBUG /* check kernel/include/kernel/keyboard.h */
 	//if (!(__pitc__ % 1000))
 	//  printf("%d\n", __pitc__ / 1000);
-
-	#ifdef KEYBOARD_DEBUG
 	uint8_t _k;
-	while (_k = next_keycode()) {
-		printf("%c", _k);
+	char _c;
+
+	while ((_k = next_keycode())) {
+		char _c = keycode_to_text(_k);
+		if (_c) {
+			printf("%c", _c);
+		}
 	}
-	#endif
+#endif
 }
 
 /*
