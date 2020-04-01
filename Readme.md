@@ -23,15 +23,6 @@ cd carbon
 
 To build the kernel, run `make` inside of either the kernel directory or root directory.
 
-```bash
-cd kernel
-make
-cd ..
-```
-OR
-```bash
-make
-```
 
 Additional information and common problems can be found in [`doc/building-the-kernel.md`](https://github.com/davidaylaian/carbon/blob/master/doc/building-the-kernel.md).
 
