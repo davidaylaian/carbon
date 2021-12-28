@@ -11,8 +11,8 @@ First, decide where to install the cross-compiler, what versions of software to 
 INSTALL="/usr/local"
 
 # software versions
-BINUTILS_VERSION="2.31.1"
-GCC_VERSION="8.3.0"
+BINUTILS_VERSION="2.37"
+GCC_VERSION="11.2.0"
 
 # languages, seperated by commas
 # valid languages are ada, c, c++, fortran, go, jit, lto, objc, and obj-c++
@@ -34,10 +34,10 @@ Before building anything, install the necessary dependencies. On a system that u
 
 ```sh
 sudo apt-get update
-sudo apt-get install gcc g++ make bison flex gawk libgmp3-dev libmpfr-dev libmpfr4 libmpfr4-dbg libmpc-dev texinfo libcloog-isl-dev build-essential gcc-multilib libc6-i386
+sudo apt-get install gcc g++ make bison flex gawk libgmp3-dev libmpfr-dev libmpc-dev texinfo -isl-dev build-essential gcc-multilib libc6-i386
 ```
 
-On other systems, you will have to find the equivalent packages.
+If you want to install cloog (an optional dependency), do that now. On systems with different packages than mine, you will have to find the equivalent packages.
 
 ## Part 2: Building the Compiler
 
@@ -67,7 +67,7 @@ In every session that you use the cross-compiler, you will need to re-export `PA
 export PATH="/usr/local/cross/install/bin:$PATH"
 ```
 
-to `.bashrc`. Now, it is time to build and install binutils and GCC themselves. This will take a while. Binutils comes first.
+to `.bashrc`. Now, it is time to build and install binutils and GCC. This will take a while. Binutils first.
 
 ```sh
 sudo mkdir build-binutils
