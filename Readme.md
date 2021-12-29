@@ -34,7 +34,7 @@ To build Carbon-x86.iso, run `make build` in the root directory
 
 Any emulator should work, but we reccomend qemu.
 
-To install qemu: `sudo apt-get install qemu`<br>
+To install qemu: `sudo apt-get install qemu-system-x86`<br>
 To use qemu: `qemu-system-i386 -cdrom Carbon-x86.iso`
 
 Running `make test` automatically builds and launches qemu with the iso in order to test it.
