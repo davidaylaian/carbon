@@ -34,7 +34,7 @@ Before building anything, install the necessary dependencies. On a system that u
 
 ```sh
 sudo apt-get update
-sudo apt-get install gcc g++ make bison flex gawk libgmp3-dev libmpfr-dev libmpc-dev texinfo -isl-dev build-essential gcc-multilib libc6-i386
+sudo apt-get install gcc g++ make bison flex gawk libgmp3-dev libmpfr-dev libmpc-dev texinfo build-essential gcc-multilib libc6-i386
 ```
 
 If you want to install cloog (an optional dependency), do that now. On systems with different packages than mine, you will have to find the equivalent packages.
