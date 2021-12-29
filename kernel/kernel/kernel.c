@@ -8,20 +8,13 @@
 
 #include <kernel/hal.h>
 #include <kernel/terminal.h>
-#include <kernel/keyboard.h>
 #include <stdio.h>
 #include <string.h>
 
 void kernel_main()
 {
-	//TODO: MOVE TO DIFFERENT INSTALL
-	uint8_t keycode_buffer[1024] = {0};
-
 	terminal_install();
 	hal_initialize();
-
-	//TODO: MOVE TO DIFFERENT INSTALL
-	keyboard_install(KEYDUMP, keycode_buffer, 1024);
 
 	printf("kernel_main()\n");
 

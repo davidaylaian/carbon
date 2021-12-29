@@ -13,7 +13,6 @@ void idt_install();
 void pic_remap();
 void isr_install();
 void irq_install();
-void pit_install();
 void idt_setvect();
 
 void hal_initialize()
@@ -23,7 +22,6 @@ void hal_initialize()
 	pic_remap();
 	isr_install();
 	irq_install();
-	pit_install();
 }
 
 void setvect(size_t intn, size_t handler)
